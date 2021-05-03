@@ -61,6 +61,7 @@ Push-Location $dotfilesInstallDir
 Pop-Location
 
 $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+$newProcess.WorkingDirectory = Split-Path -parent $profile
 $newProcess.Arguments = "-nologo";
 [System.Diagnostics.Process]::Start($newProcess);
 exit

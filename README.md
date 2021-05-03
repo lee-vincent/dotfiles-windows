@@ -30,7 +30,7 @@ To install these dotfiles from PowerShell without Git:
 ```bash
 Set-ExecutionPolicy Unrestricted
 ```
-Set-ExecutionPolicy Unrestricted ; iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
+Set-ExecutionPolicy Unrestricted -Force; iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
 ```bash
 iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
 ```
