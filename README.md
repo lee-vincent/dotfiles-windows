@@ -1,4 +1,4 @@
-﻿# Jay Harris's dotfiles for Windows
+﻿# Vinnie Lee dotfiles for Windows, from Jay Harris
 
 A collection of PowerShell files for Windows, including common application installation through `Chocolatey` and `npm`, and developer-minded Windows configuration defaults. 
 
@@ -31,6 +31,9 @@ To install these dotfiles from PowerShell without Git:
 
 ```bash
 Set-ExecutionPolicy Unrestricted
+```
+
+```bash
 iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
 ```
 
