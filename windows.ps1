@@ -376,6 +376,10 @@ Get-AppXProvisionedPackage -Online | Where DisplayName -like "Microsoft.People" 
 Get-AppxPackage "Microsoft.Windows.Photos" -AllUsers | Remove-AppxPackage
 Get-AppXProvisionedPackage -Online | Where DisplayName -like "Microsoft.Windows.Photos" | Remove-AppxProvisionedPackage -Online
 
+# Uninstall Mixed Reality
+Get-AppxPackage "Microsoft.MixedReality.Portal" -AllUsers | Remove-AppxPackage
+Get-AppXProvisionedPackage -Online | Where DisplayName -like "Microsoft.MixedReality.Portal" | Remove-AppxProvisionedPackage -Online
+
 # Uninstall Print3D
 Get-AppxPackage "Microsoft.Print3D" -AllUsers | Remove-AppxPackage
 Get-AppXProvisionedPackage -Online | Where DisplayName -like "Microsoft.Print3D" | Remove-AppxProvisionedPackage -Online
