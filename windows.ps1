@@ -14,15 +14,15 @@ if (!(Verify-Elevated)) {
 Write-Host "Configuring System..." -ForegroundColor "Yellow"
 
 # Set Computer Name
-(Get-WmiObject Win32_ComputerSystem).Rename("CHOZO") | Out-Null
+(Get-WmiObject Win32_ComputerSystem).Rename("VLEE-WS-WIN-VM") | Out-Null
 
 ## Set DisplayName for my account. Use only if you are not using a Microsoft Account
-#$myIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-#$user = Get-WmiObject Win32_UserAccount | Where {$_.Caption -eq $myIdentity.Name}
-#$user.FullName = "Jay Harris
-#$user.Put() | Out-Null
-#Remove-Variable user
-#Remove-Variable myIdentity
+$myIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+$user = Get-WmiObject Win32_UserAccount | Where {$_.Caption -eq $myIdentity.Name}
+$user.FullName = "Vinnie Lee"
+$user.Put() | Out-Null
+Remove-Variable user
+Remove-Variable myIdentity
 
 # Enable Developer Mode
 #Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
