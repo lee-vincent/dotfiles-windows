@@ -1,8 +1,6 @@
-﻿# Vinnie Lee dotfiles for Windows, from Jay Harris
+﻿# Vinnie dotfiles for Windows WSL2 Ubuntu dev machine setup
 
 A collection of PowerShell files for Windows, including common application installation through `Chocolatey` and `npm`, and developer-minded Windows configuration defaults. 
-
-Are you a Mac user? Check out my [dotfiles](https://github.com/jayharris/dotfiles) repository.
 
 ## Installation
 
@@ -108,18 +106,3 @@ Finally, be sure to reference your own repository in the git-free installation c
 ```bash
 iex ((new-object net.webclient).DownloadString('https://raw.github.com/$account/$repo/$branch/setup/install.ps1'))
 ```
-
-## Feedback
-
-Suggestions/improvements are
-[welcome and encouraged](https://github.com/jayharris/dotfiles-windows/issues)!
-
-## Author
-
-| [![twitter/jayharris](http://gravatar.com/avatar/1318668b99b2d5a3900f3f7758763a69?s=70)](http://twitter.com/jayharris "Follow @jayharris on Twitter") |
-|---|
-| [Jay Harris](http://twitter.com/jayharris/) |
-
-## Thanks to…
-
-* @[Mathias Bynens](http://mathiasbynens.be/) for his [OS X dotfiles](http://mths.be/dotfiles), which this repository is modeled after.
