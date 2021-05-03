@@ -2,6 +2,9 @@ $account = "lee-vincent"
 $repo    = "dotfiles-windows"
 $branch  = "master"
 
+$localRepoDir = Join-Path $HOME "repos"
+if (![System.IO.Directory]::Exists($localRepoDir)) {[System.IO.Directory]::CreateDirectory($localRepoDir)}
+
 $dotfilesTempDir = Join-Path $env:TEMP "dotfiles"
 if (![System.IO.Directory]::Exists($dotfilesTempDir)) {[System.IO.Directory]::CreateDirectory($dotfilesTempDir)}
 $sourceFile = Join-Path $dotfilesTempDir "dotfiles.zip"
