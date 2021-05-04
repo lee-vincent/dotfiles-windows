@@ -60,5 +60,6 @@ $UbuntuDwn="$home\Downloads\ubuntu-2004.appx"
 curl https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi --output $MSIDwn
 Start-Process msiexec.exe -Wait -ArgumentList "/I $MSIDwn"
 wsl --set-default-version 2
-curl -L -o $UbuntuDwn https://aka.ms/wsl-ubuntu-2004
+curl -L -o $UbuntuDwn https://aka.ms/wslubuntu2004
 Add-AppxPackage $UbuntuDwn
+ubuntu2004.exe
