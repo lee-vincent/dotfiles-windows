@@ -53,16 +53,23 @@ choco install GoogleChrome          --limit-output; <# pin; evergreen #> choco p
 choco install wireshark             --limit-output
 # choco install Fiddler             --limit-output
 # choco install winmerge            --limit-output
+choco install vscode                --limit-output
+choco install visualstudio2019professional  --limit-output
+choco install docker-desktop    --limit-output
+choco install putty --limit-output
+choco install adobereader /DesktopIcon /NoUpdates  --limit-output
 
 Refresh-Environment
 $MSIDwn="$home\Downloads\kernelupdate.msi"
 $UbuntuDwn="$home\Downloads\ubuntu-2004.appx"
+$WTDwn="$home\Downloads\wt.msixbundle"
 curl https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi --output $MSIDwn
 Start-Process msiexec.exe -Wait -ArgumentList "/I $MSIDwn"
 wsl --set-default-version 2
+
 curl -L -o $UbuntuDwn https://aka.ms/wslubuntu2004
 Add-AppxPackage $UbuntuDwn
 ubuntu2004.exe
 
-curl -L -o wt.msixbundle https://github.com/microsoft/terminal/releases/download/v1.8.1032.0/Microsoft.WindowsTerminalPreview_1.8.1032.0_8wekyb3d8bbwe.msixbundle
-Add-AppxPackage wt.msixbundle
+curl -L -o $WTDwn https://github.com/microsoft/terminal/releases/download/v1.8.1032.0/Microsoft.WindowsTerminalPreview_1.8.1032.0_8wekyb3d8bbwe.msixbundle
+Add-AppxPackage $WTDwn
