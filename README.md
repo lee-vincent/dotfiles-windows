@@ -6,7 +6,7 @@ A collection of PowerShell files for Windows, including common application insta
 
 ### Using Git and the bootstrap script
 
-You can clone the repository wherever you want. (I like to keep it in `~\Projects\dotfiles-windows`.) The bootstrapper script will copy the files to your PowerShell Profile folder.
+You can clone the repository wherever you want. (I keep it in `~\repos\dotfiles-windows`.) The bootstrapper script will copy the files to your PowerShell Profile folder.
 
 From PowerShell:
 ```posh

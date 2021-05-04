@@ -243,6 +243,9 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advan
 # Taskbar: Don't show Windows Store Apps on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "StoreAppsOnTaskbar" 0
 
+# Taskbar: Don't show TaskView Button
+Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowTaskViewButton" 0
+
 # Taskbar: Disable Bing Search
 # Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\ConnectedSearch" "ConnectedSearchUseWeb" 0 # For Windows 8.1
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" "BingSearchEnabled" 0 # For Windows 10
@@ -286,6 +289,7 @@ Write-Host "Configuring Default Windows Applications..." -ForegroundColor "Yello
 
 $ProvisionedAppPackageNames = @(
     "Microsoft.3DBuilder"
+    "Microsoft.Microsoft3DViewer"
     "Microsoft.WindowsAlarms"
     "*.AutodeskSketchBook"
     "Microsoft.BingFinance"
@@ -299,6 +303,7 @@ $ProvisionedAppPackageNames = @(
     "DolbyLaboratories.DolbyAccess"
     "*.Facebook"
     "Microsoft.MicrosoftOfficeHub"
+    "Microsoft.WindowsFeedbackHub"
     "Microsoft.GetStarted"
     "Microsoft.WindowsMaps"
     "*.MarchofEmpires"
@@ -333,6 +338,9 @@ foreach ($ProvisionedAppName in $ProvisionedAppPackageNames) {
     Get-AppxPackage -Name $ProvisionedAppName -AllUsers | Remove-AppxPackage
     Get-AppXProvisionedPackage -Online | Where-Object DisplayName -EQ $ProvisionedAppName | Remove-AppxProvisionedPackage -Online
 }
+
+taskkill /f /im OneDrive.exe
+C:\Windows\SysWOW64\OneDriveSetup.exe /uninstall
 
 # Uninstall Windows Media Player
 Disable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -NoRestart -WarningAction SilentlyContinue | Out-Null
