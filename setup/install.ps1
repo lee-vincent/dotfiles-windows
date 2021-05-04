@@ -60,7 +60,7 @@ Push-Location $dotfilesInstallDir
 & .\bootstrap.ps1
 Pop-Location
 
-set-location Split-Path -parent $profile
+Set-Location (Split-Path -parent $profile)
 & .\windows.ps1
 
 # $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
