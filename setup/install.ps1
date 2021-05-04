@@ -63,7 +63,7 @@ Pop-Location
 
 $newpath= Split-Path -parent $profile
 Set-Location $newpath
-& .\windows.ps1
+.\windows.ps1
 
 # $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
 # $newProcess.WorkingDirectory = Split-Path -parent $profile
