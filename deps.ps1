@@ -63,3 +63,6 @@ wsl --set-default-version 2
 curl -L -o $UbuntuDwn https://aka.ms/wslubuntu2004
 Add-AppxPackage $UbuntuDwn
 ubuntu2004.exe
+
+curl -L -o wt.msixbundle https://github.com/microsoft/terminal/releases/download/v1.8.1032.0/Microsoft.WindowsTerminalPreview_1.8.1032.0_8wekyb3d8bbwe.msixbundle
+Add-AppxPackage wt.msixbundle
