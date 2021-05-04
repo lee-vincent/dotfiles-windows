@@ -29,9 +29,9 @@ To update your settings, `cd` into your local `dotfiles-windows` repository with
 . .\bootstrap.ps1
 ```
 
-### Git-free install
+### My Preferred method: Git-free install
 
-> Run PowerShell as Administrator to install dotfiles without Git:
+> Run PowerShell as Administrator to install dotfiles without Git. Note that this will automatically execute the windows.ps1 script and a restart
 
 ```posh
 Set-ExecutionPolicy Unrestricted -Force; iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
@@ -65,13 +65,23 @@ Extras is designed to augment the existing settings and configuration. You could
 
 When setting up a new Windows PC, you may want to set some Windows defaults and features, such as showing hidden files in Windows Explorer and removing stock programs. This will also set your machine name and full user name, so you may want to modify this file before executing. It will automatically restart the machine upon completion.
 
-```post
+```posh
 .\windows.ps1
+```
+
+If testing in a Hyper-V VM shut down the guest os and run the following from the host machine
+
+```posh
+Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 ```
 
 ### Install dependencies and packages
 
 When setting up a new Windows box, you may want to install some common packages, utilities, and dependencies. These could include node.js packages via [NPM](https://www.npmjs.org), [Chocolatey](http://chocolatey.org/) packages, Windows Features and Tools via [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx), and Visual Studio Extensions from the [Visual Studio Gallery](http://visualstudiogallery.msdn.microsoft.com/).
+
+```posh
+Set-Location ~\Documents\WindowsPowershell\
+```
 
 ```posh
 .\deps.ps1
