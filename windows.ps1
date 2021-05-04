@@ -27,7 +27,10 @@ Remove-Variable myIdentity
 # Enable Developer Mode
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
 # Bash on Windows
-Enable-WindowsOptionalFeature -Online -All -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart -WarningAction SilentlyContinue | Out-Null
+# Enable-WindowsOptionalFeature -Online -All -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart -WarningAction SilentlyContinue | Out-Null
+# https://docs.microsoft.com/en-us/windows/wsl/install-win10
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
 ###############################################################################
 ### Privacy                                                                   #
@@ -570,4 +573,5 @@ Set-PSReadlineOption -Colors @{
 Reset-AllPowerShellShortcuts
 Reset-AllBashShortcuts
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
+echo "Done. Note that some of these changes require a logout/restart to take effect. Which Im doing now."
+Restart-Computer
