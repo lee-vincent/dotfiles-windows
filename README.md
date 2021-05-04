@@ -19,20 +19,12 @@ To update your settings, `cd` into your local `dotfiles-windows` repository with
 . .\bootstrap.ps1
 ```
 
-Note: You must have your execution policy set to unrestricted (or at least in bypass) for this to work: `Set-ExecutionPolicy Unrestricted`.
-
 ### Git-free install
 
-> **Note:** You must have your execution policy set to unrestricted (or at least in bypass) for this to work. To set this, run `Set-ExecutionPolicy Unrestricted` from a PowerShell running as Administrator.
-
-To install these dotfiles from PowerShell without Git:
+> Run PowerShell as Administrator to install dotfiles without Git:
 
 ```bash
-Set-ExecutionPolicy Unrestricted
-```
 Set-ExecutionPolicy Unrestricted -Force; iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
-```bash
-iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
 ```
 
 To update later on, just run that command again.
