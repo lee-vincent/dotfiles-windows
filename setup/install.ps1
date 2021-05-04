@@ -63,9 +63,13 @@ Pop-Location
 
 $newpath= Split-Path -parent $profile
 $newProcessArgs="-nologo", "-file .\windows.ps1"
-$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
-$newProcess.WorkingDirectory = $newpath
-$newProcess.ArgumentList = $newProcessArgs
-#  "-nologo .\windows.ps1";
-[System.Diagnostics.Process]::Start($newProcess);
+Start-Process powershell.exe -WorkingDirectory $newpath -ArgumentList $newProcessArgs
+
+
+# $newProcessArgs="-nologo", "-file .\windows.ps1"
+# $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+# $newProcess.WorkingDirectory = $newpath
+# $newProcess.ArgumentList = $newProcessArgs
+# #  "-nologo .\windows.ps1";
+# [System.Diagnostics.Process]::Start($newProcess);
 exit
