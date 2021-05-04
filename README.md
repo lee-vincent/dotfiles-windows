@@ -4,6 +4,16 @@ A collection of PowerShell files for Windows, including common application insta
 
 ## Installation
 
+### Hyper-V Testing
+
+When testing/iterating use Windows 10 Home 10.0.19042 Build 19042 Version 20H2 on a Hyper-V VM
+
+Nested Virtualization must be enabled manually on the VM for WSL2 to install
+
+```posh
+Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
+```
+
 ### Using Git and the bootstrap script
 
 You can clone the repository wherever you want. (`~\repos\dotfiles-windows`) The bootstrapper script will copy the files to your PowerShell Profile folder.

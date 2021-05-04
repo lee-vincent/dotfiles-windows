@@ -55,3 +55,10 @@ choco install wireshark             --limit-output
 # choco install winmerge            --limit-output
 
 Refresh-Environment
+$MSIDwn="$home\Downloads\kernelupdate.msi"
+$UbuntuDwn="$home\Downloads\ubuntu-2004.appx"
+curl https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi --output $MSIDwn
+Start-Process msiexec.exe -Wait -ArgumentList "/I $MSIDwn"
+wsl --set-default-version 2
+curl -L -o $UbuntuDwn https://aka.ms/wsl-ubuntu-2004
+Add-AppxPackage $UbuntuDwn
