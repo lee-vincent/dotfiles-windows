@@ -18,7 +18,7 @@ Write-Host "Configuring System..." -ForegroundColor "Yellow"
 
 ## Set DisplayNamee for my account. Use only if you are not using a Microsoft Account
 $myIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-$user = Get-WmiObject Win32_UserAccount | Where {$_.Caption -eq $myIdentity.Name}
+$user = Get-WmiObject Win32_UserAccount | Where-Object {$_.Caption -eq $myIdentity.Name}
 $user.FullName = "Vinnie Lee"
 $user.Put() | Out-Null
 Remove-Variable user
@@ -521,7 +521,7 @@ Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\Tru
 "HKCU:\Console\Windows PowerShell (x86)",`
 "HKCU:\Console\Windows PowerShell",`
 "HKCU:\Console"`
-) | ForEach {
+) | ForEach-Object {
     If (!(Test-Path $_)) {
         New-Item -path $_ -ItemType Folder | Out-Null
     }
@@ -597,5 +597,5 @@ Set-PSReadlineOption -Colors @{
 Reset-AllPowerShellShortcuts
 Reset-AllBashShortcuts
 
-echo "Done. Note that some of these changes require a logout/restart to take effect. Which Im doing now."
+Write-Output "Done. Note that some of these changes require a logout/restart to take effect. Which Im doing now."
 Restart-Computer

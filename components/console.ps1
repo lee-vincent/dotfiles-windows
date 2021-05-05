@@ -39,7 +39,7 @@ namespace dotfiles {
 }
 '@
 
-function Verify-Elevated {
+function Assert-Elevated {
     # Get the ID and security principal of the current user account
     $myIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
     $myPrincipal=new-object System.Security.Principal.WindowsPrincipal($myIdentity)
@@ -47,7 +47,7 @@ function Verify-Elevated {
     return $myPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
-function Verify-PowershellShortcut {
+function Assert-PowershellShortcut {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
@@ -66,7 +66,7 @@ function Verify-PowershellShortcut {
     return $result
 }
 
-function Verify-BashShortcut {
+function Assert-BashShortcut {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
@@ -94,13 +94,13 @@ function Reset-PowerShellShortcut {
     if (!(Test-Path $Path)) { Return }
 
     if (Test-Path $Path -PathType Container) {
-        Get-ChildItem $Path | ForEach {
+        Get-ChildItem $Path | ForEach-Object {
             Reset-PowerShellShortcut $_.FullName
         }
         Return
     }
 
-    if (Verify-PowershellShortcut $Path) {
+    if (Assert-PowershellShortcut $Path) {
         $filePath = Resolve-Path $Path
 
         try {
@@ -128,13 +128,13 @@ function Reset-BashShortcut {
     if (!(Test-Path $Path)) { Return }
 
     if (Test-Path $Path -PathType Container) {
-        Get-ChildItem $Path | ForEach {
+        Get-ChildItem $Path | ForEach-Object {
             Reset-BashShortcut $_.FullName
         }
         Return
     }
 
-    if (Verify-BashShortcut $Path) {
+    if (Assert-BashShortcut $Path) {
         $filePath = Resolve-Path $Path
 
         try {
@@ -157,7 +157,7 @@ function Reset-AllPowerShellShortcuts {
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu",`
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar",`
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"`
-    ) | ForEach { Reset-PowerShellShortcut $_ }
+    ) | ForEach-Object { Reset-PowerShellShortcut $_ }
 }
 
 function Reset-AllBashShortcuts {
@@ -166,7 +166,7 @@ function Reset-AllBashShortcuts {
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\StartMenu",`
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar",`
         "$ENV:USERPROFILE\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"`
-    ) | ForEach { Reset-BashShortcut $_ }
+    ) | ForEach-Object { Reset-BashShortcut $_ }
 }
 
 function Convert-ConsoleColor {

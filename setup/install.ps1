@@ -11,18 +11,18 @@ $sourceFile = Join-Path $dotfilesTempDir "dotfiles.zip"
 $dotfilesInstallDir = Join-Path $dotfilesTempDir "$repo-$branch"
 
 
-function Download-File {
+function Get-Webfile {
   param (
     [string]$url,
     [string]$file
   )
-  Write-Host "Downloading $url to $file"
+  Write-Output "Downloading $url to $file"
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   Invoke-WebRequest -Uri $url -OutFile $file
 
 }
 
-function Unzip-File {
+function Expand-Zipfile {
     param (
         [string]$File,
         [string]$Destination = (Get-Location).Path
@@ -52,9 +52,9 @@ function Unzip-File {
     }
 }
 
-Download-File "https://github.com/$account/$repo/archive/$branch.zip" $sourceFile
+Get-Webfile "https://github.com/$account/$repo/archive/$branch.zip" $sourceFile
 if ([System.IO.Directory]::Exists($dotfilesInstallDir)) {[System.IO.Directory]::Delete($dotfilesInstallDir, $true)}
-Unzip-File $sourceFile $dotfilesTempDir
+Expand-Zipfile $sourceFile $dotfilesTempDir
 
 Push-Location $dotfilesInstallDir
 & .\bootstrap.ps1
