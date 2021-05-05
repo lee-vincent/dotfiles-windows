@@ -14,6 +14,12 @@ Write-Output '      </StartLayoutCollection>' >> $customLayout
 Write-Output '  </DefaultLayoutOverride>' >> $customLayout
 Write-Output '</LayoutModificationTemplate>' >> $customLayout
 
+Import-StartLayout -LayoutPath $customLayout -MountPath "C:\"
+
+$NewLocalAdmin="Vinnie2"
+New-LocalUser "$NewLocalAdmin" -NoPassword
+Add-LocalGroupMember -Group "Administrators" -Member "$NewLocalAdmin"
+
 Exit
 
 $localRepoDir = Join-Path $HOME "repos"
