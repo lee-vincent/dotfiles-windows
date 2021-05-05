@@ -16,7 +16,7 @@ function Get-Webfile {
     [string]$url,
     [string]$file
   )
-  Write-Output "Downloading $url to $file"
+  Write-Host "Downloading $url to $file"
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   Invoke-WebRequest -Uri $url -OutFile $file
 
