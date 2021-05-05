@@ -45,20 +45,6 @@ If `.\extra.ps1` exists, it will be sourced along with the other files. You can 
 
 `.\extra.ps1` could look something like this:
 
-```posh
-# Not in the repository, to prevent people from accidentally committing under my name
-Set-Environment "EMAIL" "Jay Harris <jay@aranasoft.com>"
-
-# Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-Set-Environment "GIT_AUTHOR_NAME" "Jay Harris","User"
-Set-Environment "GIT_COMMITTER_NAME" $env:GIT_AUTHOR_NAME
-git config --global user.name $env:GIT_AUTHOR_NAME
-Set-Environment "GIT_AUTHOR_EMAIL" "jay@aranasoft.com"
-Set-Environment "GIT_COMMITTER_EMAIL" $env:GIT_AUTHOR_EMAIL
-git config --global user.email $env:GIT_AUTHOR_EMAIL
-```
-
 Extras is designed to augment the existing settings and configuration. You could also use `./extra.ps1` to override settings, functions and aliases, but it is probably better to fork.
 
 ### Sensible Windows defaults

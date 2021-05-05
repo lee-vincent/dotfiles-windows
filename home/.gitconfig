@@ -1,4 +1,14 @@
-﻿[alias]
+﻿# --global config files
+
+# -- WINDOWS -- #
+# C:\Users\Vinnie\.gitconfig
+# \\wsl$\Ubuntu-20.04\home\vlee\.gitconfig
+
+# -- WSL -- #
+# /mnt/c/Users/Vinnie/.gitconfig
+# /home/vlee/.gitconfig
+
+[alias]
     # List current aliases
     aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '"
     # View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -49,7 +59,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-    
+
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = warn

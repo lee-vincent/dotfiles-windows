@@ -11,7 +11,18 @@ if (!(Verify-Elevated)) {
 ###############################################################################
 ### Security and Identity                                                     #
 ###############################################################################
-Write-Host "Configuring System..." -ForegroundColor "Yellow"
+Write-Output "Configuring System..." -ForegroundColor "Yellow"
+
+$gitUserName = Read-Host -Prompt "Enter git username"
+$gitEmail = Read-Host -Prompt "Enter git email"
+
+[Environment]::SetEnvironmentVariable("GIT_AUTHOR_NAME", $gitUserName, "User")
+[Environment]::SetEnvironmentVariable("GIT_COMMITTER_NAME", $env:GIT_AUTHOR_NAME, "User")
+[Environment]::SetEnvironmentVariable("GIT_AUTHOR_EMAIL", $gitEmail, "User")
+[Environment]::SetEnvironmentVariable("GIT_COMMITTER_EMAIL", $env:GIT_AUTHOR_EMAIL, "User")
+
+Remove-Variable gitUserName
+Remove-Variable gitEmail
 
 # Set Computer Name
 (Get-WmiObject Win32_ComputerSystem).Rename("VLEE-WS-WIN-VM") | Out-Null
@@ -21,6 +32,7 @@ $myIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
 $user = Get-WmiObject Win32_UserAccount | Where-Object {$_.Caption -eq $myIdentity.Name}
 $user.FullName = "Vinnie Lee"
 $user.Put() | Out-Null
+
 Remove-Variable user
 Remove-Variable myIdentity
 
@@ -36,7 +48,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ###############################################################################
 ### Privacy                                                                   #
 ###############################################################################
-Write-Host "Configuring Privacy..." -ForegroundColor "Yellow"
+Write-Output "Configuring Privacy..." -ForegroundColor "Yellow"
 
 # General: Don't let apps use advertising ID for experiences across apps: Allow: 1, Disallow: 0
 if (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo")) {New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" -Type Folder | Out-Null}
@@ -201,7 +213,7 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliver
 ###############################################################################
 ### Devices, Power, and Startup                                               #
 ###############################################################################
-Write-Host "Configuring Devices, Power, and Startup..." -ForegroundColor "Yellow"
+Write-Output "Configuring Devices, Power, and Startup..." -ForegroundColor "Yellow"
 
 # Sound: Disable Startup Sound
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" "DisableStartupSound" 1
@@ -222,7 +234,7 @@ Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config" "Au
 ###############################################################################
 ### Explorer, Taskbar, and System Tray                                        #
 ###############################################################################
-Write-Host "Configuring Explorer, Taskbar, and System Tray..." -ForegroundColor "Yellow"
+Write-Output "Configuring Explorer, Taskbar, and System Tray..." -ForegroundColor "Yellow"
 
 # Ensure necessary registry paths
 if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Type Folder | Out-Null}
@@ -312,7 +324,7 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Gr
 ###############################################################################
 ### Default Windows Applications                                              #
 ###############################################################################
-Write-Host "Configuring Default Windows Applications..." -ForegroundColor "Yellow"
+Write-Output "Configuring Default Windows Applications..." -ForegroundColor "Yellow"
 
 $ProvisionedAppPackageNames = @(
     "Microsoft.3DBuilder"
@@ -388,7 +400,7 @@ Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\CloudContent" "Disab
 ###############################################################################
 ### Accessibility and Ease of Use                                             #
 ###############################################################################
-Write-Host "Configuring Accessibility..." -ForegroundColor "Yellow"
+Write-Output "Configuring Accessibility..." -ForegroundColor "Yellow"
 
 # Turn Off Windows Narrator
 if (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Narrator.exe")) {New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Narrator.exe" -Type Folder | Out-Null}
@@ -412,7 +424,7 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\TabletTip\1.7" "EnableAutocorrection"
 ###############################################################################
 ### Windows Update & Application Updates                                      #
 ###############################################################################
-Write-Host "Configuring Windows Update..." -ForegroundColor "Yellow"
+Write-Output "Configuring Windows Update..." -ForegroundColor "Yellow"
 
 # Ensure Windows Update registry paths
 if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate" -Type Folder | Out-Null}
@@ -446,7 +458,7 @@ Set-ItemProperty "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Delivery
 ###############################################################################
 ### Windows Defender                                                          #
 ###############################################################################
-Write-Host "Configuring Windows Defender..." -ForegroundColor "Yellow"
+Write-Output "Configuring Windows Defender..." -ForegroundColor "Yellow"
 
 # Disable Cloud-Based Protection: Enabled Advanced: 2, Enabled Basic: 1, Disabled: 0
 Set-MpPreference -MAPSReporting 0
@@ -457,7 +469,7 @@ Set-MpPreference -SubmitSamplesConsent 2
 ###############################################################################
 ### Internet Explorer                                                         #
 ###############################################################################
-Write-Host "Configuring Internet Explorer..." -ForegroundColor "Yellow"
+Write-Output "Configuring Internet Explorer..." -ForegroundColor "Yellow"
 
 # Set home page to `about:blank` for faster loading
 Set-ItemProperty "HKCU:\Software\Microsoft\Internet Explorer\Main" "Start Page" "about:blank"
@@ -472,7 +484,7 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Setti
 ###############################################################################
 ### Disk Cleanup (CleanMgr.exe)                                               #
 ###############################################################################
-Write-Host "Configuring Disk Cleanup..." -ForegroundColor "Yellow"
+Write-Output "Configuring Disk Cleanup..." -ForegroundColor "Yellow"
 
 $diskCleanupRegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\"
 
@@ -509,7 +521,7 @@ Remove-Variable diskCleanupRegPath
 ###############################################################################
 ### PowerShell Console                                                        #
 ###############################################################################
-Write-Host "Configuring Console..." -ForegroundColor "Yellow"
+Write-Output "Configuring Console..." -ForegroundColor "Yellow"
 
 # Make 'Source Code Pro' an available Console font
 Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont' 000 'Source Code Pro'

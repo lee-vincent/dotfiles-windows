@@ -60,6 +60,9 @@ choco install putty --limit-output
 choco install adobereader /DesktopIcon /NoUpdates  --limit-output
 
 Refresh-Environment
+git config --global user.name $env:GIT_AUTHOR_NAME
+git config --global user.email $env:GIT_AUTHOR_EMAIL
+
 $MSIDwn="$home\Downloads\kernelupdate.msi"
 $UbuntuDwn="$home\Downloads\ubuntu-2004.appx"
 $WTDwn="$home\Downloads\wt.msixbundle"
