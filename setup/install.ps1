@@ -2,32 +2,6 @@ $account = "lee-vincent"
 $repo    = "dotfiles-windows"
 $branch  = "master"
 
-
-$customLayout = "$home\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml"
-
-if (! (Test-Path $customLayout))
-{
-    Write-Output '<?xml version="1.0"?>' > $customLayout
-    Write-Output '<LayoutModificationTemplate xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification" Version="1" xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout" xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout">' >> $customLayout
-    Write-Output '  <LayoutOptions StartTileGroupCellWidth="6"/>' >> $customLayout
-    Write-Output '  <DefaultLayoutOverride>' >> $customLayout
-    Write-Output '      <StartLayoutCollection>' >> $customLayout
-    Write-Output '          <defaultlayout:StartLayout GroupCellWidth="6"/>' >> $customLayout
-    Write-Output '      </StartLayoutCollection>' >> $customLayout
-    Write-Output '  </DefaultLayoutOverride>' >> $customLayout
-    Write-Output '</LayoutModificationTemplate>' >> $customLayout
-
-    Import-StartLayout -LayoutPath $customLayout -MountPath "C:\"
-
-    $NewLocalAdmin="Vinnie2"
-    New-LocalUser "$NewLocalAdmin" -NoPassword
-    Add-LocalGroupMember -Group "Administrators" -Member "$NewLocalAdmin"
-
-    Exit
-}
-
-
-
 $localRepoDir = Join-Path $HOME "repos"
 if (![System.IO.Directory]::Exists($localRepoDir)) {[System.IO.Directory]::CreateDirectory($localRepoDir)}
 
