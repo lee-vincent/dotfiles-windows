@@ -291,6 +291,10 @@ New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer
 
 New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\Dwm\" -Name "ForceEffectMode" -Value 1 -PropertyType DWORD
 
+########### Turn off all unecessary animations
+New-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects\" -Name "VisualFxSetting"  -Value 3 -PropertyType DWORD
+## This sets the check boxes in performance preferences
+Set-ItemProperty "HKCU:\Control Panel\Desktop" -Name UserPreferencesMask -Value ([byte[]](0x09E,0x2C,0x07,0x80,0x10,0x00,0x00,0x00))
 
 
 # Set up a dark theme
