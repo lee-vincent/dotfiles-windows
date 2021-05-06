@@ -65,3 +65,11 @@ $newpath= Split-Path -parent $profile
 $newProcessArgs="-nologo", "-file .\windows.ps1"
 Start-Process powershell.exe -WorkingDirectory $newpath -ArgumentList $newProcessArgs
 exit
+
+
+# # /C:/Users/Vinnie/AppData/Roaming/Code/User/settings.json
+# /home/vlee/.vscode-server/data/Machine/settings.json
+
+# need to add settings.json for windows terminal to the repository and copy it to correct location
+# # windows terminal settings
+# # C:\Users\Vinnie\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
