@@ -63,6 +63,27 @@ Refresh-Environment
 git config --global user.name $env:GIT_AUTHOR_NAME
 git config --global user.email $env:GIT_AUTHOR_EMAIL
 
+$VSCodeExtensions = @(
+    "CoenraadS.bracket-pair-colorizer-2"
+    "hashicorp.terraform"
+    "ms-azuretools.vscode-docker"
+    "ms-dotnettools.csharp"
+    "ms-kubernetes-tools.vscode-kubernetes-tools"
+    "ms-python.pythonms-toolsai.jupyter"
+    "ms-vscode-remote.remote-containers"
+    "ms-vscode-remote.remote-ssh"
+    "ms-vscode-remote.remote-ssh-edit"
+    "ms-vscode-remote.remote-wsl"
+    "ms-vscode-remote.vscode-remote-extensionpack"
+    "ms-vscode.cpptools"
+    "ms-vscode.powershell"
+    "redhat.vscode-yaml"
+)
+
+foreach ($Extension in $VSCodeExtensions) {   
+    code --install-extension $Extension
+}
+
 $MSIDwn="$home\Downloads\kernelupdate.msi"
 $UbuntuDwn="$home\Downloads\ubuntu-2004.appx"
 $WTDwn="$home\Downloads\wt.msixbundle"
