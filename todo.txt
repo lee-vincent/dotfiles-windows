@@ -1,3 +1,10 @@
 --add work flag in setup/install.ps1 that customizes theme, adds programs and makes minimal changes to system settings
-vscode prompts you to run the below command to fix a compatibility issue between vscode powershell integration and PackageManagement
-powershell.exe -NoLogo -NoProfile -Command '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Install-Module -Name PackageManagement -Force -MinimumVersion 1.4.6 -Scope CurrentUser -AllowClobber -Repository PSGallery'
+--vscode prompts you to run the below command to fix a compatibility issue between vscode powershell integration and PackageManagement
+    powershell.exe -NoLogo -NoProfile -Command '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Install-Module -Name PackageManagement -Force -MinimumVersion 1.4.6 -Scope CurrentUser -AllowClobber -Repository PSGallery'
+--add powershell extension ignore problem settings to file tracking in home/
+    "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1" ------ in posh> write-host "$(split-path -parent $profile)\PSScriptAnalyzerSettings.psd1)"
+--add windows terminal and vscode settings json files to tracking in home/
+    vscode Windows::            /C:/Users/Vinnie/AppData/Roaming/Code/User/settings.json
+    vscode WSL2 Ubuntu::        /home/vlee/.vscode-server/data/Machine/settings.json
+    Windows Terminal Windows::  C:\Users\Vinnie\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
+--add mouse line scroll settings in windows.ps1
