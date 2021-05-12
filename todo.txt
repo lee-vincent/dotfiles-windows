@@ -1,1 +1,3 @@
 --add work flag in setup/install.ps1 that customizes theme, adds programs and makes minimal changes to system settings
+vscode prompts you to run the below command to fix a compatibility issue between vscode powershell integration and PackageManagement
+powershell.exe -NoLogo -NoProfile -Command '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Install-Module -Name PackageManagement -Force -MinimumVersion 1.4.6 -Scope CurrentUser -AllowClobber -Repository PSGallery'
