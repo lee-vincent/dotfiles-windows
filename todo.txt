@@ -8,3 +8,4 @@
     vscode WSL2 Ubuntu::        /home/vlee/.vscode-server/data/Machine/settings.json
     Windows Terminal Windows::  C:\Users\Vinnie\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
 --add mouse line scroll settings in windows.ps1
+--why doesnt source code pro install
