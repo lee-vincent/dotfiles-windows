@@ -1,0 +1,1 @@
+--add work flag in setup/install.ps1 that customizes theme, adds programs and makes minimal changes to system settings
