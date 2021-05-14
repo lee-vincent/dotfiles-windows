@@ -9,3 +9,5 @@
     Windows Terminal Windows::  C:\Users\Vinnie\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
 --add mouse line scroll settings in windows.ps1
 --why doesnt source code pro install
+--pin items to taskbar https://stackoverflow.com/questions/31720595/pin-program-to-taskbar-using-ps-in-windows-10
+--set "show taskbar buttons on taskbar where window is open"
