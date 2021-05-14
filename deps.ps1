@@ -31,7 +31,7 @@ Install-Module PSWindowsUpdate -Scope CurrentUser -Force
 
 ### Chocolatey
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
-if ((which cinst) -eq $null) {
+if ($null -eq (which cinst)) {
     iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')
     Refresh-Environment
     choco feature enable -n=allowGlobalConfirmation
@@ -78,6 +78,7 @@ $VSCodeExtensions = @(
     "ms-vscode.cpptools"
     "ms-vscode.powershell"
     "redhat.vscode-yaml"
+    "GitHub.github-vscode-theme"
 )
 
 foreach ($Extension in $VSCodeExtensions) {   
