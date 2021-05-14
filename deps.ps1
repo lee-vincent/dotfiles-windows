@@ -55,8 +55,8 @@ choco install wireshark             --limit-output
 # choco install winmerge            --limit-output
 choco install vscode                --limit-output
 choco install visualstudio2019professional  --limit-output
-choco install docker-desktop    --limit-output
-choco install putty --limit-output
+choco install docker-desktop        --limit-output
+choco install putty                 --limit-output
 choco install adobereader /DesktopIcon /NoUpdates  --limit-output
 
 Refresh-Environment
