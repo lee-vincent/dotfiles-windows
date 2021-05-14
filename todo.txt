@@ -12,3 +12,4 @@
     --or install github font form vscode into powershell?
 --pin items to taskbar https://stackoverflow.com/questions/31720595/pin-program-to-taskbar-using-ps-in-windows-10
 --set "show taskbar buttons on taskbar where window is open"
+--do i have any custom vscode keybindings?? C:\Users\Vinnie\AppData\Roaming\Code\User\keybindings.json
