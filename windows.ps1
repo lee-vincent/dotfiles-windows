@@ -225,6 +225,18 @@ powercfg /hibernate off
 # Power: Set standby delay to 24 hours
 powercfg /change /standby-timeout-ac 1440
 
+# Disable certain Intel(R) Dynamic Tuning Technology Settings so your laptop doesnt watch your face and lock/shut the screen off
+# when you take a bathroom break...weird technology...commrade
+
+# Disable (Display Off After Lock Control)
+powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
+
+# Disable (Walk Away Lock Control)
+powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
+
+# Disable (Walk Away Lock Control With External Monitor)
+powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
+
 # SSD: Disable SuperFetch
 Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" "EnableSuperfetch" 0
 
