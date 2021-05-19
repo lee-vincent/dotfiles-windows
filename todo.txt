@@ -17,3 +17,9 @@
 [
     { "key": "ctrl+g ctrl+p",           "command": "git.push"},
 ]
+
+install DISKSPD onto Machine
+https://docs.microsoft.com/en-us/azure-stack/hci/manage/diskspd-overview
+$client = new-object System.Net.WebClient
+$client.DownloadFile("https://github.com/microsoft/diskspd/releases/download/v2.0.21a/DiskSpd.zip","<ENTER_PATH>\DiskSpd-2.0.21a.zip")
+Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.0.21a.zip -DestinationPath C:\DISKSPD
