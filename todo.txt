@@ -25,3 +25,4 @@ $client.DownloadFile("https://github.com/microsoft/diskspd/releases/download/v2.
 Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.0.21a.zip -DestinationPath C:\DISKSPD
 
 File Explorer - set the View to Details for everything
+-change show windows ink workspace button on taskbar to no
