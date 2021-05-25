@@ -30,7 +30,7 @@ function Reinstall-Package {
 }
 
 # Wire StudioShell Functions if Exists
-if ((Get-Module -ListAvailable StudioShell) -ne $null) {
+if ($null -ne (Get-Module -ListAvailable StudioShell)) {
   Import-Module StudioShell
 
   <#

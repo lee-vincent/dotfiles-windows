@@ -1,0 +1,28 @@
+--add work flag in setup/install.ps1 that customizes theme, adds programs and makes minimal changes to system settings
+--vscode prompts you to run the below command to fix a compatibility issue between vscode powershell integration and PackageManagement
+    powershell.exe -NoLogo -NoProfile -Command '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Install-Module -Name PackageManagement -Force -MinimumVersion 1.4.6 -Scope CurrentUser -AllowClobber -Repository PSGallery'
+--add powershell extension ignore problem settings to file tracking in home/
+    "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1" ------ in posh> write-host "$(split-path -parent $profile)\PSScriptAnalyzerSettings.psd1)"
+--add windows terminal and vscode settings json files to tracking in home/
+    vscode Windows::            /C:/Users/Vinnie/AppData/Roaming/Code/User/settings.json
+    vscode WSL2 Ubuntu::        /home/vlee/.vscode-server/data/Machine/settings.json
+    Windows Terminal Windows::  C:\Users\Vinnie\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
+--add mouse line scroll settings in windows.ps1
+--why doesnt source code pro install
+    --or install github font form vscode into powershell?
+--pin items to taskbar https://stackoverflow.com/questions/31720595/pin-program-to-taskbar-using-ps-in-windows-10
+--set "show taskbar buttons on taskbar where window is open"
+--do i have any custom vscode keybindings?? C:\Users\Vinnie\AppData\Roaming\Code\User\keybindings.json
+// Place your key bindings in this file to override the defaults
+[
+    { "key": "ctrl+g ctrl+p",           "command": "git.push"},
+]
+
+install DISKSPD onto Machine
+https://docs.microsoft.com/en-us/azure-stack/hci/manage/diskspd-overview
+$client = new-object System.Net.WebClient
+$client.DownloadFile("https://github.com/microsoft/diskspd/releases/download/v2.0.21a/DiskSpd.zip","<ENTER_PATH>\DiskSpd-2.0.21a.zip")
+Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.0.21a.zip -DestinationPath C:\DISKSPD
+
+File Explorer - set the View to Details for everything
+-change show windows ink workspace button on taskbar to no

@@ -1,18 +1,28 @@
-﻿# dotfiles for Windows WSL2 Ubuntu dev machine setup
+﻿﻿# Vinnie's dotfiles for Windows 10 with WSL2 Ubuntu machine setup
 
-A collection of PowerShell files for Windows, including common application installation through `Chocolatey`, and developer-minded Windows configuration defaults. 
+A collection of PowerShell files for Windows, including common application installation through `Chocolatey`, and developer-minded Windows configuration defaults.
 
-## Installation
 
-### Hyper-V Testing
+## Testing and Iterating on Hyper-V
 
-When testing/iterating use Windows 10 Home 10.0.19042 Build 19042 Version 20H2 on a Hyper-V VM
+To fine tune settings for your own use case, I recommend setting up a Windows VM for testing and iteration instead of using your workstation/laptop. Using a test VM is especially important when experimenting with and making adjustments to the Windows Registry.
 
-Nested Virtualization must be enabled manually on the VM for WSL2 to install
+This is the process I follow:
 
+1. Create Windows 10 install media - currently a Windows.iso of Windows 10 Home 10.0.19042 Build 19042 Version 20H2
+2. Boot the VM without connecting a network so you're able to create a "local" user account instead of being forced to connect a Microsoft account
+3. After logging in as the local user the very first time, power the VM off
+4. From PowerShell on your Hyper-V host, enable Nested Virtualization on the VM so you will be able to configure WSL2 inside the VM
+
+From PowerShell:
 ```posh
 Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 ```
+5. Boot the VM and log in as the local user
+6. Take a Hyper-V snapshot/checkpoint of the VM so you can revert changes quickly. Name it something like "fresh-install"
+
+
+## Installation
 
 ### Using Git and the bootstrap script
 
@@ -20,7 +30,7 @@ You can clone the repository wherever you want. (`~\repos\dotfiles-windows`) The
 
 From PowerShell:
 ```posh
-git clone https://github.com/jayharris/dotfiles-windows.git; cd dotfiles-windows; . .\bootstrap.ps1
+git clone https://github.com/lee-vincent/dotfiles-windows.git; cd dotfiles-windows; . .\bootstrap.ps1
 ```
 
 To update your settings, `cd` into your local `dotfiles-windows` repository within PowerShell and then:
@@ -55,7 +65,7 @@ When setting up a new Windows PC, you may want to set some Windows defaults and 
 .\windows.ps1
 ```
 
-If testing in a Hyper-V VM shut down the guest os and run the following from the host machine
+If testing in a Hyper-V VM shut down the guest os and run the following from the host machine if you didn't follow the instructions in the "Testing and Iterating on Hyper-V" section
 
 ```posh
 Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true

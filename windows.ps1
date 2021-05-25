@@ -225,6 +225,27 @@ powercfg /hibernate off
 # Power: Set standby delay to 24 hours
 powercfg /change /standby-timeout-ac 1440
 
+# Disable certain Intel(R) Dynamic Tuning Technology Settings so your laptop doesnt watch your face and lock/shut the screen off
+# when you take a bathroom break...weird technology...commrade
+
+# Disable (Display Off After Lock Control)
+# when plugged in
+powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
+# when on battery
+powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
+
+# Disable (Walk Away Lock Control)
+# when plugged in
+powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
+# when on battery
+powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
+
+# Disable (Walk Away Lock Control With External Monitor)
+# when plugged in
+powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
+# when on battery
+powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
+
 # SSD: Disable SuperFetch
 Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" "EnableSuperfetch" 0
 
@@ -280,7 +301,7 @@ Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\Windows Search" "All
 #Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "HideSCAPower" 1  # Power
 
 # Taskbar: Show colors on Taskbar, Start, and SysTray: Disabled: 0, Taskbar, Start, & SysTray: 1, Taskbar Only: 2
-    # set to 0 in combination with other settings below to get transparant taskbae
+    # set to 0 in combination with other settings below to get transparant taskbar
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name ColorPrevalence -Value 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name EnableTransparency -Value 1
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name AppsUseLightTheme -Value 0
