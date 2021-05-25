@@ -1,4 +1,4 @@
-﻿# Vinnie dotfiles for Windows WSL2 Ubuntu dev machine setup
+﻿# dotfiles for Windows WSL2 Ubuntu dev machine setup
 
 A collection of PowerShell files for Windows, including common application installation through `Chocolatey`, and developer-minded Windows configuration defaults. 
 
