@@ -32,3 +32,12 @@ https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-ico
 draw.io plugin
 https://powershell-icons.s3.amazonaws.com/pink_powershell_ise.ico
 https://powershell-icons.s3.amazonaws.com/pink_powershell.ico
+i like the pink ppowershell icon if im going to set up the shortcut to always run as administrator
+https://www.reddit.com/r/PowerShell/comments/bp62nr/pink_powershell_icons_i_made_in_my_spare_time/
+AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell
+icons in this folder
+
+clean up file explorer System.IsPinnedToNamespaceTree in regedit
+
+start menu and taskbar shortcuts to C:\Users\Vinnie\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell needs target: %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -File C:\Users\Vinnie\Documents\WindowsPowerShell\posh_as_admin.ps1
+(does not have run as admin checked off)
