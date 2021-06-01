@@ -26,3 +26,9 @@ Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.0.21a.zip -DestinationPath C:\
 
 File Explorer - set the View to Details for everything
 -change show windows ink workspace button on taskbar to no
+
+-open posh as admin by default using task scheduler but not when vscode opens
+https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons
+draw.io plugin
+https://powershell-icons.s3.amazonaws.com/pink_powershell_ise.ico
+https://powershell-icons.s3.amazonaws.com/pink_powershell.ico
