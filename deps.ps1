@@ -43,7 +43,7 @@ choco install nuget.commandline     --limit-output
 # choco install webpi               --limit-output
 choco install git.install           --limit-output -params '"/GitAndUnixToolsOnPath /NoShellIntegration"'
 # choco install nvm.portable        --limit-output
-# choco install python              --limit-output
+choco install python              --limit-output
 # choco install ruby                --limit-output
 
 # browsers
@@ -57,7 +57,7 @@ choco install vscode                --limit-output
 choco install visualstudio2019professional  --limit-output
 choco install docker-desktop    --limit-output
 choco install putty                 --limit-output
-choco install adobereader /DesktopIcon /NoUpdates  --limit-output
+# choco install adobereader /DesktopIcon /NoUpdates  --limit-output
 
 Refresh-Environment
 git config --global user.name $env:GIT_AUTHOR_NAME
@@ -78,7 +78,8 @@ $VSCodeExtensions = @(
     "ms-vscode.cpptools"
     "ms-vscode.powershell"
     "redhat.vscode-yaml"
-    "GitHub.github-vscode-theme"
+    "whizkydee.material-palenight-theme"
+    # "GitHub.github-vscode-theme"
 )
 
 foreach ($Extension in $VSCodeExtensions) {   
