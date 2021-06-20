@@ -253,22 +253,41 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explo
 #Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "HideSCAPower" 1  # Power
 
 # Taskbar: Show colors on Taskbar, Start, and SysTray: Disabled: 0, Taskbar, Start, & SysTray: 1, Taskbar Only: 2
-    # set to 0 in combination with other settings below to get transparant taskbar
+# This combination produces a transparant taskbar
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name ColorPrevalence -Value 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name EnableTransparency -Value 1
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name AppsUseLightTheme -Value 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name SystemUsesLightTheme -Value 0
-
-
 New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\" -Name "UseOLEDTaskbarTransparency" -Value 1 -PropertyType DWORD
-
 New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\Dwm\" -Name "ForceEffectMode" -Value 1 -PropertyType DWORD
 
-########### Turn off all unecessary animations
+# Turn off all unecessary animations
 New-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects\" -Name "VisualFxSetting"  -Value 3 -PropertyType DWORD
-## This sets the check boxes in performance preferences
-Set-ItemProperty "HKCU:\Control Panel\Desktop" -Name UserPreferencesMask -Value ([byte[]](0x09E,0x2C,0x07,0x80,0x10,0x00,0x00,0x00))
 
+# This sets the check boxes in performance preferences
+#########################################################
+# &#9675; Let Windows choose what's best for my computer #
+# &#9675; Adjust for best appearance #
+# &#9675; Adjust for best performance #
+# &#9675; Custom#
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+
+reg add “HKCU\Control Panel\Desktop” /v “UserPreferencesMask” /t REG_BINARY /d 9C32038010000000 /f
 
 # Set up a dark theme
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" -Name StartColorMenu -Value 4290799360
@@ -278,7 +297,6 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Accen
 # Plain black desktop background
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name WallPaper -Value ""
 
-
 # Titlebar: Disable theme colors on titlebar
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\DWM" "ColorPrevalence" 1
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\DWM" "AccentColor" 4282006074
@@ -287,10 +305,7 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\DWM" "AccentColor" 4282006074
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "ConfirmFileDelete" 0
 
 # Sync Settings: Disable automatically syncing settings with other Windows 10 devices
-# Theme
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Personalization" "Enabled" 0
-# Internet Explorer (Removed in 1903)
-#Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\BrowserSettings" "Enabled" 0
 # Passwords
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Credentials" "Enabled" 0
 # Language
