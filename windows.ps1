@@ -80,9 +80,6 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" "AcceptedPrivacyPolicy" 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" "HasAccepted" 0
 
-# Taskbar: Disable Cortana
-Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\Windows Search" "AllowCortana" 0
-
 # General: Disable Application launch tracking: Enable: 1, Disable: 0
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start-TrackProgs" 0
 
@@ -233,6 +230,9 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advan
 # Taskbar: Disable Bing Search on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" "BingSearchEnabled" 0
 
+# Taskbar: Disable Cortana
+Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\Windows Search" "AllowCortana" 0
+
 # Taskbar: Hide Taskbar Buttons when using Multiple Displays
 # Show taskbar buttons on all taskbars: 0
 # Show taskbar buttons on main taskbar and taskbar where window is open: 1 
@@ -296,7 +296,7 @@ New-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Visua
 #                                                        #
 #                                                        #
 ##########################################################
-reg add “HKCU\Control Panel\Desktop” /v “UserPreferencesMask” /t REG_BINARY /d 9C32038010000000 /f
+reg add "HKCU\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d 9C32038010000000 /f
 
 # Set up a dark theme
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" -Name StartColorMenu -Value 4290799360
