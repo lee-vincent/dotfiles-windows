@@ -181,6 +181,9 @@ Write-Host "Configuring Devices, Power, and Startup..." -ForegroundColor "Yellow
 # SSD: Disable SuperFetch
 # Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" "EnableSuperfetch" 0
 
+# TODO:
+# programs that run on startup??
+#\Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run
 
 ###############################################################################
 ### Explorer, Taskbar, and System Tray                                        #
@@ -191,16 +194,20 @@ Write-Host "Configuring Explorer, Taskbar, and System Tray..." -ForegroundColor 
 if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Type Folder | Out-Null}
 if (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState")) {New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState" -Type Folder | Out-Null}
 if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Search")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Search" -Type Folder | Out-Null}
+if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace" -Type Folder | Out-Null}
 
 # Explorer: Show hidden files by default: Show Files: 1, Hide Files: 2
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Hidden" 1
 
-# Hide OneDrive in file explorer
+# Explorer: Remove OneDrive folder from Explorer navigation panel
 Set-ItemProperty "HKCU:\Software\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" "System.IsPinnedToNameSpaceTree" 0
 Set-ItemProperty "HKCU:\Software\Classes\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" "System.IsPinnedToNameSpaceTree" 0
 
 # Explorer: Show file extensions by default
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "HideFileExt" 0
+
+# Explorer: Remove folders that cause clutter from Explorer navigation panel
+Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "NavPaneShowAllFolders" 0
 
 # Explorer: Show path in title bar 
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState" "FullPath" 1
@@ -224,7 +231,19 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advan
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowTaskViewButton" 0
 
 # Taskbar: Disable Bing Search on Taskbar
-Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" "BingSearchEnabled" 0 # For Windows 10
+Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" "BingSearchEnabled" 0
+
+# Taskbar: Hide Taskbar Buttons when using Multiple Displays
+# Show taskbar buttons on all taskbars: 0
+# Show taskbar buttons on main taskbar and taskbar where window is open: 1 
+# Show taskbar buttons only on taskbar where window is open: 2 
+Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "MMTaskbarMode" 1
+
+# Taskbar: Don't show Windows Ink Workspace on Taskbar
+Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace" "AllowWindowsInkWorkspace" 0
+
+# Taskbar: Don't show Meet Now button on Taskbar
+Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "HideSCAMeetNow" 1
 
 
 # SysTray: Hide the Action Center, Network, and Volume icons
