@@ -18,7 +18,7 @@ private static void AddFolderToQuickAccess(string pathToFolder)
 private static void RemoveFolderFromQuickAccess(string pathToFolder)
 {
     using (var runspace = RunspaceFactory.CreateRunspace())
-    {
+    {Re
         runspace.Open();
         var ps = PowerShell.Create();
         var removeScript =
