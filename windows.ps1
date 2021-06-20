@@ -265,28 +265,37 @@ New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\Dwm\" -Name "ForceEffec
 New-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects\" -Name "VisualFxSetting"  -Value 3 -PropertyType DWORD
 
 # This sets the check boxes in performance preferences
-#########################################################
-# &#9675; Let Windows choose what's best for my computer #
-# &#9675; Adjust for best appearance #
-# &#9675; Adjust for best performance #
-# &#9675; Custom#
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-##
-
-
+##########################################################
+#    ○ Let Windows choose what's best for my computer    #
+#    ○ Adjust for best appearance                        #
+#    ○ Adjust for best performance                       #
+#    ● Custom                                            #
+#                                                        #
+#                                                        #
+#                                                        #
+#  ____________________________________________________  #
+#  | ◻ Animate controls and elements inside windows    | #
+#  | ◻ Animate windows when minimizing and maximizing  | #
+#  | ◻ Animations in the taskbar                       | #  ##can i remove this setting above the?
+#  | ▣ Enable Peek                                     | #
+#  | ◻ Fade or slide menus into view                   | #
+#  | ◻ Fade or slide ToolTips into view                | #
+#  | ◻ Fade out menu after clicking                    | #
+#  | ◻ Save taskbar thumbnail previews                 | #
+#  | ▣ Show shadows under mouse pointer                | #
+#  | ◻ Show shadows under windows                      | #
+#  | ▣ Show thumbnails instead of icons                | #
+#  | ▣ Show translucent selection of rectangle         | #
+#  | ▣ Show window content while dragging              | #
+#  | ▣ Slide open combo boxes                          | #
+#  | ▣ Smooth edges of screen fonts                    | #
+#  | ▣ Smooth-scroll list boxes                        | #
+#  | ▣ Use drop shadows for icon labels on the desktop | #
+#  ____________________________________________________  #
+#                                                        #
+#                                                        #
+#                                                        #
+##########################################################
 reg add “HKCU\Control Panel\Desktop” /v “UserPreferencesMask” /t REG_BINARY /d 9C32038010000000 /f
 
 # Set up a dark theme
