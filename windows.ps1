@@ -218,9 +218,6 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advan
 # Taskbar: Don't show Windows Store Apps on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "StoreAppsOnTaskbar" 0
 
-# Taskbar: Disable animations on Taskbar
-# Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarAnimations" 0
-
 # Taskbar: Don't show Cortana button on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowCortanaButton" 0
 
@@ -261,7 +258,8 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Persona
 New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\" -Name "UseOLEDTaskbarTransparency" -Value 1 -PropertyType DWORD
 New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\Dwm\" -Name "ForceEffectMode" -Value 1 -PropertyType DWORD
 
-# Turn off all unecessary animations
+# Adjust the appearance and performance of Windows
+# Set appearance options to "Custom"
 New-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects\" -Name "VisualFxSetting"  -Value 3 -PropertyType DWORD
 
 # This sets the check boxes in performance preferences
@@ -276,7 +274,7 @@ New-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Visua
 #  ____________________________________________________  #
 #  | ◻ Animate controls and elements inside windows    | #
 #  | ◻ Animate windows when minimizing and maximizing  | #
-#  | ◻ Animations in the taskbar                       | #  ##can i remove this setting above the?
+#  | ◻ Animations in the taskbar                       | #
 #  | ▣ Enable Peek                                     | #
 #  | ◻ Fade or slide menus into view                   | #
 #  | ◻ Fade or slide ToolTips into view                | #
@@ -391,14 +389,6 @@ Disable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -NoRest
 if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\CloudContent")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\CloudContent" -Type Folder | Out-Null}
 Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\CloudContent" "DisableWindowsConsumerFeatures" 1
 
-###############################################################################
-### Lock Screen                                                               #
-###############################################################################
-
-## Enable Custom Background on the Login / Lock Screen
-## Background file: C:\someDirectory\someImage.jpg
-## File Size Limit: 256Kb
-# Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\Personalization" "LockScreenImage" "C:\someDirectory\someImage.jpg"
 
 ###############################################################################
 ### Accessibility and Ease of Use                                             #
@@ -422,7 +412,7 @@ Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File 
 # Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "JointResize" 0
 
 # Disable auto-correct
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\TabletTip\1.7" "EnableAutocorrection" 0
+# Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\TabletTip\1.7" "EnableAutocorrection" 0
 
 ###############################################################################
 ### Windows Update & Application Updates                                      #
@@ -434,7 +424,7 @@ if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate")) {New
 if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" -Type Folder | Out-Null}
 
 # Enable Automatic Updates
-Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" "NoAutoUpdate" 0
+Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" "NoAutoUpdate" 1
 
 # Disable automatic reboot after install
 Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate" "NoAutoRebootWithLoggedOnUsers" 1
@@ -448,16 +438,19 @@ Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\WindowsUpdate\AU" "I
 # figure out when reg key corresponds to include updates for other microsoft products
 
 # Opt-In to Microsoft Update
+# Settings > Windows Update> Advanced Options > Receive updates for other Microsoft products when you update Windows
 # $MU = New-Object -ComObject Microsoft.Update.ServiceManager -Strict
 # $MU.AddService2("7971f918-a847-4430-9279-4a52d1efe18d",7,"") | Out-Null
 # Remove-Variable MU
 
-# Delivery Optimization: Download from 0: Http Only [Disable], 1: Peering on LAN, 2: Peering on AD / Domain, 3: Peering on Internet, 99: No peering, 100: Bypass & use BITS
-#Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" "DODownloadMode" 0
-# if (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization")) {New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" -Type Folder | Out-Null}
-# if (!(Test-Path "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DeliveryOptimization")) {New-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DeliveryOptimization" -Type Folder | Out-Null}
-# Set-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" "DODownloadMode" 0
-# Set-ItemProperty "HKLM:\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\DeliveryOptimization" "DODownloadMode" 0
+# Opt-Out of Microsoft Update
+# Settings > Windows Update> Advanced Options > Receive updates for other Microsoft products when you update Windows
+# $MU = New-Object -ComObject Microsoft.Update.ServiceManager -Strict
+# $MU.RemoveService("7971f918-a847-4430-9279-4a52d1efe18d") | Out-Null
+# Remove-Variable MU
+
+# Settings > Windows Update> Advanced Options > Show a notification when your PC requires a restart to finish updating
+Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" "RestartNotificationsAllowed2" 1
 
 ###############################################################################
 ### Windows Defender                                                          #
@@ -480,9 +473,6 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Internet Explorer\Main" "Start Page" 
 
 # Disable 'Default Browser' check: "yes" or "no"
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Internet Explorer\Main" "Check_Associations" "no"
-
-# Disable Password Caching [Disable Remember Password]
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings" "DisablePasswordCaching" 1
 
 
 ###############################################################################
