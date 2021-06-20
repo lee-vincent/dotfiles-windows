@@ -364,7 +364,15 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Gr
 # Other Windows Settings
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Groups\Windows" "Enabled" 0
 
-
+# Remove clutter folders from home directory
+Remove-Item -Path "$HOME\3D Objects" -Force -Recurse
+Remove-Item -Path "$HOME\Contacts" -Force -Recurse
+Remove-Item -Path "$HOME\Favorites" -Force -Recurse
+Remove-Item -Path "$HOME\Links" -Force -Recurse
+Remove-Item -Path "$HOME\Music" -Force -Recurse
+Remove-Item -Path "$HOME\Saved Games" -Force -Recurse
+Remove-Item -Path "$HOME\Videos" -Force -Recurse
+Remove-Item -Path "$HOME\Searches" -Force -Recurse
 
 ###############################################################################
 ### Default Windows Applications                                              #
