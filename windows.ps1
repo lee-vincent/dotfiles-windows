@@ -614,5 +614,8 @@ Set-PSReadlineOption -Colors @{
 Reset-AllPowerShellShortcuts
 Reset-AllBashShortcuts
 
-Write-Host "Done. Note that some of these changes require a logout/restart to take effect. Which Im doing now."
-Restart-Computer
+$restartNow
+$restartNow = Read-Host -Prompt "Restart Now?"
+if ($restartNow -eq "Y") {
+    Restart-Computer
+}
