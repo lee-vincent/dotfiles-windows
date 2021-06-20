@@ -298,6 +298,7 @@ New-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Visua
 ##########################################################
 reg add "HKCU\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d 9C32038010000000 /f
 reg add "HKCU\Control Panel\Desktop\WindowMetrics" /v "MinAnimate" /t REG_SZ /d 0 /f
+
 # Set up a dark theme
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" -Name StartColorMenu -Value 4290799360
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent" -Name AccentPalette -Value ([byte[]](0x06B,0x6B,0x6B,0xFF,0x59,0x59,0x59,0xFF,0x4C,0x4C,0x4C,0xFF,0x3F,0x3F,0x3F,0xFF,0x33,0x33,0x33,0xFF,0x26,0x26,0x26,0xFF,0x14,0x14,0x14,0xFF,0x88,0x17,0x98,0x00))
@@ -382,9 +383,6 @@ foreach ($ProvisionedAppName in $ProvisionedAppPackageNames) {
     Get-AppxPackage -Name $ProvisionedAppName -AllUsers | Remove-AppxPackage
     Get-AppXProvisionedPackage -Online | Where-Object DisplayName -EQ $ProvisionedAppName | Remove-AppxProvisionedPackage -Online
 }
-
-# taskkill /f /im OneDrive.exe
-# C:\Windows\SysWOW64\OneDriveSetup.exe /uninstall
 
 # Uninstall Windows Media Player
 Disable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -NoRestart -WarningAction SilentlyContinue | Out-Null
