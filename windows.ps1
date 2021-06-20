@@ -38,12 +38,15 @@ Remove-Variable myIdentity
 
 # Enable Developer Mode
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
-# Bash on Windows
+
+# Enable WSL2
 # https://docs.microsoft.com/en-us/windows/wsl/install-win10
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
 
-
+# Enable features required to run VMWare Workstation 16 side by side WSL2
+# https://blogs.vmware.com/workstation/2020/05/vmware-workstation-now-supports-hyper-v-mode.html
+Enable-WindowsOptionalFeature -online -FeatureName HypervisorPlatform -All -NoRestart
 
 ###############################################################################
 ### Privacy                                                                   #
