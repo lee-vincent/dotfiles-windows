@@ -14,8 +14,8 @@ if (!(Assert-Elevated)) {
 ###############################################################################
 Write-Host "Configuring System..." -ForegroundColor "Yellow"
 
-$gitUserName = Read-Host -Prompt "Enter git username"
-$gitEmail = Read-Host -Prompt "Enter git email"
+$gitUserName = "lee-vincent" #Read-Host -Prompt "Enter git username"
+$gitEmail = "vinnie@vinnie" #Read-Host -Prompt "Enter git email"
 
 [Environment]::SetEnvironmentVariable("GIT_AUTHOR_NAME", $gitUserName, "User")
 [Environment]::SetEnvironmentVariable("GIT_COMMITTER_NAME", $env:GIT_AUTHOR_NAME, "User")
@@ -603,8 +603,8 @@ Set-PSReadlineOption -Colors @{
 Reset-AllPowerShellShortcuts
 Reset-AllBashShortcuts
 
-$restartNow
-$restartNow = Read-Host -Prompt "Restart Now?"
-if ($restartNow -eq "Y") {
+# $restartNow
+# $restartNow = Read-Host -Prompt "Restart Now?"
+# if ($restartNow -eq "Y") {
     Restart-Computer
-}
+# }
