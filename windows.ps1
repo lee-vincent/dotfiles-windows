@@ -80,6 +80,9 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" "AcceptedPrivacyPolicy" 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" "HasAccepted" 0
 
+# Taskbar: Disable Cortana
+Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\Windows Search" "AllowCortana" 0
+
 # General: Disable Application launch tracking: Enable: 1, Disable: 0
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start-TrackProgs" 0
 
@@ -199,7 +202,7 @@ Set-ItemProperty "HKCU:\Software\Classes\WOW6432Node\CLSID\{018D5C66-4533-4307-9
 # Explorer: Show file extensions by default
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "HideFileExt" 0
 
-# Explorer: Show path in title bar
+# Explorer: Show path in title bar 
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState" "FullPath" 1
 
 # Explorer: Avoid creating Thumbs.db files on network volumes
@@ -211,18 +214,18 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advan
 # Taskbar: Don't show Windows Store Apps on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "StoreAppsOnTaskbar" 0
 
-# Taskbar: Don't show Windows Store Apps on Taskbar
+# Taskbar: Disable animations on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "TaskbarAnimations" 0
+
+# Taskbar: Don't show Cortana button on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowCortanaButton" 0
 
-# Taskbar: Don't show TaskView Button
+# Taskbar: Don't show TaskView Button on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "ShowTaskViewButton" 0
 
-# Taskbar: Disable Bing Search
+# Taskbar: Disable Bing Search on Taskbar
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" "BingSearchEnabled" 0 # For Windows 10
 
-# Taskbar: Disable Cortana
-Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\Windows Search" "AllowCortana" 0
 
 # SysTray: Hide the Action Center, Network, and Volume icons
 # Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "HideSCAHealth" 1  # Action Center
