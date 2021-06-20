@@ -1,4 +1,4 @@
-﻿﻿# Vinnie's dotfiles for Windows 10 with WSL2 Ubuntu machine setup
+﻿﻿## Vinnie's dotfiles for Windows 10 with WSL2 Ubuntu machine setup
 
 A collection of PowerShell files for Windows, including common application installation through `Chocolatey`, and developer-minded Windows configuration defaults.
 
@@ -24,6 +24,21 @@ Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 
 ## Installation
 
+### Preferred method: Git-free install
+
+> Run PowerShell as Administrator to install dotfiles without Git.
+> The install.ps1 and bootstrap.ps1 scripts will be executed and
+> overwrite identically named files in the following directories:
+> ~\Documents\WindowsPowerShell
+> ~\Documents\WindowsPowerShell\components
+> ~\
+
+```posh
+Set-ExecutionPolicy Unrestricted -Force; iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
+```
+
+To update later on, just re-run that command.
+
 ### Using Git and the bootstrap script
 
 You can clone the repository wherever you want. (`~\repos\dotfiles-windows`) The bootstrapper script will copy the files to your PowerShell Profile folder.
@@ -38,16 +53,6 @@ To update your settings, `cd` into your local `dotfiles-windows` repository with
 ```posh
 . .\bootstrap.ps1
 ```
-
-### My Preferred method: Git-free install
-
-> Run PowerShell as Administrator to install dotfiles without Git. Note that this will automatically execute the windows.ps1 script and a restart
-
-```posh
-Set-ExecutionPolicy Unrestricted -Force; iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
-```
-
-To update later on, just run that command again.
 
 ### Add custom commands without creating a new fork
 
