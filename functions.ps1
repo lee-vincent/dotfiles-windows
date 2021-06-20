@@ -154,6 +154,10 @@ function Set-SoundUnmute {
    [Audio]::Mute = $false
 }
 
+function Remove-QuickAccessFolderPin() {
+    [Pinner]
+}
+
 
 ### File System functions
 ### ----------------------------
