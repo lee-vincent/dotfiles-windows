@@ -366,6 +366,7 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\SettingSync\Gr
 
 # Remove clutter folders from home directory
 Remove-Item -Path "$HOME\3D Objects" -Force -Recurse
+Remove-Item -Path "$HOME\Pictures" -Force -Recurse
 Remove-Item -Path "$HOME\Contacts" -Force -Recurse
 Remove-Item -Path "$HOME\Favorites" -Force -Recurse
 Remove-Item -Path "$HOME\Links" -Force -Recurse
