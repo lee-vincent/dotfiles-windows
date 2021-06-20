@@ -42,4 +42,4 @@ clean up file explorer System.IsPinnedToNamespaceTree in regedit
 start menu and taskbar shortcuts to C:\Users\Vinnie\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell needs target: %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -File C:\Users\Vinnie\Documents\WindowsPowerShell\posh_as_admin.ps1
 (does not have run as admin checked off)
 
--add razer chroma settings/files to home
+-programmatically remove git username and email from .gitconfig on commits
