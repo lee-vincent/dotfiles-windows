@@ -58,43 +58,18 @@ if (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" "Enabled" 0
 Remove-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" "Id" -ErrorAction SilentlyContinue
 
-# General: Disable Application launch tracking: Enable: 1, Disable: 0
-Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start-TrackProgs" 0
-
-# General: Disable SmartScreen Filter: Enable: 1, Disable: 0
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" "EnableWebContentEvaluation" 0
-
 # General: Disable key logging & transmission to Microsoft: Enable: 1, Disable: 0
 # Disabled when Telemetry is set to Basic
 if (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Input")) {New-Item -Path "HKCU:\SOFTWARE\Microsoft\Input" -Type Folder | Out-Null}
 if (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Input\TIPC")) {New-Item -Path "HKCU:\SOFTWARE\Microsoft\Input\TIPC" -Type Folder | Out-Null}
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Input\TIPC" "Enabled" 0
 
-# General: Opt-out from websites from accessing language list: Opt-in: 0, Opt-out 1
-Set-ItemProperty "HKCU:\Control Panel\International\User Profile" "HttpAcceptLanguageOptOut" 1
-
-# General: Disable SmartGlass: Enable: 1, Disable: 0
-Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass" "UserAuthPolicy" 0
-
-# General: Disable SmartGlass over BlueTooth: Enable: 1, Disable: 0
-Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass" "BluetoothPolicy" 0
-
 # General: Disable suggested content in settings app: Enable: 1, Disable: 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338393Enabled" 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338394Enabled" 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338396Enabled" 0
 
-# Camera: Don't let apps use camera: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam" "Value" "Deny"
 
-# Microphone: Don't let apps use microphone: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone" "Value" "Deny"
-
-# Notifications: Don't let apps access notifications: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener" "Value" "Deny"/
 
 # Speech, Inking, & Typing: Stop "Getting to know me"
 if (!(Test-Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization")) {New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -Type Folder | Out-Null}
@@ -105,69 +80,47 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" "AcceptedPrivacyPolicy" 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy" "HasAccepted" 0
 
-# Account Info: Don't let apps access name, picture, and other account info: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation" "Value" "Deny"
+# General: Disable Application launch tracking: Enable: 1, Disable: 0
+Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Start-TrackProgs" 0
 
-# Contacts: Don't let apps access contacts: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\contacts" "Value" "Deny"
+# General: Disable SmartScreen Filter: Enable: 1, Disable: 0
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" "EnableWebContentEvaluation" 0
 
-# Calendar: Don't let apps access calendar: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments" "Value" "Deny"
+# General: Opt-out from websites from accessing language list: Opt-in: 0, Opt-out 1
+Set-ItemProperty "HKCU:\Control Panel\International\User Profile" "HttpAcceptLanguageOptOut" 1
 
-# Call History: Don't let apps make phone calls: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall" "Value" "Deny"
+# General: Disable SmartGlass: Enable: 1, Disable: 0
+Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass" "UserAuthPolicy" 0
 
-# Call History: Don't let apps access call history: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCallHistory" "Value" "Deny"
+# General: Disable SmartGlass over BlueTooth: Enable: 1, Disable: 0
+Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass" "BluetoothPolicy" 0
 
-# Diagnostics: Don't let apps access diagnostics of other apps: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics" "Value" "Deny"
+# Camera: let apps use camera: Allow, Deny
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam" "Value" "Allow"
 
-# Documents: Don't let apps access documents: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary" "Value" "Deny"
+# Microphone: let apps use microphone: Allow, Deny
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\microphone" "Value" "Allow"
 
-# Email: Don't let apps read and send email: Allow, Deny
-
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\email" "Value" "Deny"
-
-# File System: Don't let apps access the file system: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\broadFileSystemAccess" "Value" "Deny"
-
-# Location: Don't let apps access the location: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" "Value" "Deny"
+# Notifications: let apps access notifications: Allow, Deny
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener" "Value" "Allow"
 
 # Messaging: Don't let apps read or send messages (text or MMS): Allow, Deny
-# Build 1903
+if (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat")) {New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -Type Folder | Out-Null}
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat" "Value" "Deny"
 
 # Pictures: Don't let apps access pictures: Allow, Deny
-# Build 1903
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\picturesLibrary" "Value" "Deny"
 
-# Radios: Don't let apps control radios (like Bluetooth): Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios" "Value" "Deny"
+# Radios: let apps control radios (like Bluetooth): Allow, Deny
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\radios" "Value" "Allow"
 
 # Tasks: Don't let apps access the tasks: Allow, Deny
-# Build 1903
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userDataTasks" "Value" "Deny"
 
-# Other Devices: Don't let apps share and sync with non-explicitly-paired wireless devices over uPnP: Allow, Deny
-# Build 1903
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync" "Value" "Deny"
+# Other Devices: let apps share and sync with non-explicitly-paired wireless devices over uPnP: Allow, Deny
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\bluetoothSync" "Value" "Allow"
 
 # Videos: Don't let apps access videos: Allow, Deny
-# Build 1903
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\videosLibrary" "Value" "Deny"
 
 # Feedback: Windows should never ask for my feedback
@@ -181,22 +134,29 @@ Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataC
 # Start Menu: Disable suggested content: Enable: 1, Disable: 0
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" "SubscribedContent-338388Enabled" 0
 
-###############################################################################
-### Devices, Power, and Startup                                               #
-###############################################################################
-Write-Host "Configuring Devices, Power, and Startup..." -ForegroundColor "Yellow"
-
 # Sound: Disable Startup Sound
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" "DisableStartupSound" 1
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation" "DisableStartupSound" 1
 
 
+###############################################################################
+### File Explorer                                                             #
+###############################################################################
+Write-Host "Configuring File Explorer Customizations..." -ForegroundColor "Yellow"
+
 # Hide OneDrive in file explorer
 Set-ItemProperty "HKCU:\Software\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" "System.IsPinnedToNameSpaceTree" 0
 Set-ItemProperty "HKCU:\Software\Classes\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" "System.IsPinnedToNameSpaceTree" 0
 
+
+
+###############################################################################
+### Devices, Power, and Startup                                               #
+###############################################################################
+Write-Host "Configuring Devices, Power, and Startup..." -ForegroundColor "Yellow"
+
 # Power: Disable Hibernation
-powercfg /hibernate off
+#powercfg /hibernate off
 
 # Power: Set standby delay to 24 hours
 # powercfg /change /standby-timeout-ac 1440
@@ -206,27 +166,25 @@ powercfg /hibernate off
 
 # Disable (Display Off After Lock Control)
 # when plugged in
-powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
+#powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
 # when on battery
-powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
+#powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
 
 # Disable (Walk Away Lock Control)
 # when plugged in
-powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
+#powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
 # when on battery
-powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
+#powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
 
 # Disable (Walk Away Lock Control With External Monitor)
 # when plugged in
-powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
+#powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
 # when on battery
-powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
+#powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
 
 # SSD: Disable SuperFetch
 # Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" "EnableSuperfetch" 0
 
-# Network: Disable WiFi Sense
-Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config" "AutoConnectAllowedOEM" 0
 
 ###############################################################################
 ### Explorer, Taskbar, and System Tray                                        #
