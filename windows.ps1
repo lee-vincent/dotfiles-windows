@@ -635,8 +635,8 @@ Set-PSReadlineOption -Colors @{
 Reset-AllPowerShellShortcuts
 Reset-AllBashShortcuts
 
-# $restartNow
-# $restartNow = Read-Host -Prompt "Restart Now?"
-# if ($restartNow -eq "Y") {
+$restartNow
+$restartNow = Read-Host -Prompt "Restart Now?"
+if ($restartNow -eq "Y") {
     Restart-Computer
-# }
+}
