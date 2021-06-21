@@ -5,18 +5,6 @@ using System.Management.Automation.Runspaces;
 
 public class QuickAccessFolderPinner
 {
-    public static void AddFolderToQuickAccess(string pathToFolder)
-    {
-        using (var runspace = RunspaceFactory.CreateRunspace())
-        {
-            runspace.Open();
-            var ps = PowerShell.Create();
-            var shellApplication = ps.AddCommand("New-Object").AddParameter("ComObject", "shell.application").Invoke();
-            dynamic nameSpace = shellApplication.FirstOrDefault()?.Methods["NameSpace"].Invoke(pathToFolder);
-            nameSpace?.Self.InvokeVerb("pintohome");
-        }
-    }
-
     public static void RemoveFolderFromQuickAccess(string pathToFolder)
     {
         using (var runspace = RunspaceFactory.CreateRunspace())

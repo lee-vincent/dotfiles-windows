@@ -165,16 +165,16 @@ function Remove-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $Path)
     [QuickAccessFolderPinner]::RemoveFolderFromQuickAccess($Path)
 }
 
-function Add-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $Path) {
-  <#
-  .SYNOPSIS
-  Pin a folder to Quick Access
+# function Add-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $Path) {
+#   <#
+#   .SYNOPSIS
+#   Pin a folder to Quick Access
 
-  .DESCRIPTION
-  Pin a folder to the Quick Access drop down in Explorer
-  #>
-    [QuickAccessFolderPinner]::AddFolderToQuickAccess($Path)
-}
+#   .DESCRIPTION
+#   Pin a folder to the Quick Access drop down in Explorer
+#   #>
+#     [QuickAccessFolderPinner]::AddFolderToQuickAccess($Path)
+# }
 
 
 ### File System functions
