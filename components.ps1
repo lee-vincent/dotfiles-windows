@@ -3,7 +3,7 @@
 Push-Location (Join-Path (Split-Path -parent $profile) "components")
 
 # From within the ./components directory...
-. .\pins.ps1
+. .\quick-access-folder-pins.ps1
 . .\coreaudio.ps1
 . .\git.ps1
 
