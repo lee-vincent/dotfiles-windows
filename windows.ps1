@@ -195,6 +195,19 @@ if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace")
 
 Remove-QuickAccessFolderPin("$HOME\Pictures")
 
+New-Item -Path "$HOME" -Name "Reading" -ItemType "directory"
+$foldersToPin = @(
+    "$HOME\repos"
+    "$HOME\Reading"
+)
+
+foreach ($folder in $foldersToPin) {
+    Add-QuickAccessFolderPin($folder)
+}
+
+
+
+
 # Explorer: Show hidden files by default: Show Files: 1, Hide Files: 2
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Hidden" 1
 

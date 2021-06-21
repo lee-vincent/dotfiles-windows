@@ -163,19 +163,20 @@ function Remove-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $Folde
   Un-pin a folder from the Quick Access drop down in Explorer
   #>
     $QuickAccess = New-Object -ComObject shell.application 
-    ($QuickAccess.Namespace("shell:::{679f85cb-0220-4080-b29b-5540cc05aab6}").Items() | where {$_.Path -eq "$FolderPath"}).InvokeVerb("unpinfromhome")
+    ($QuickAccess.Namespace("shell:::{679f85cb-0220-4080-b29b-5540cc05aab6}").Items() | where {$_.Path -eq "$FolderPath"}).InvokeVerb('unpinfromhome')
 }
 
-# function Add-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $Path) {
-#   <#
-#   .SYNOPSIS
-#   Pin a folder to Quick Access
+function Add-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $pin) {
+  <#
+  .SYNOPSIS
+  Pin a folder to Quick Access
 
-#   .DESCRIPTION
-#   Pin a folder to the Quick Access drop down in Explorer
-#   #>
-#     [QuickAccessFolderPinner]::AddFolderToQuickAccess($Path)
-# }
+  .DESCRIPTION
+  Pin a folder to the Quick Access drop down in Explorer
+  #>
+  $QuickAccess = New-Object -ComObject shell.application 
+  $QuickAccess.NameSpace($pin).Self.InvokeVerb('pintohome')
+}
 
 
 ### File System functions
