@@ -154,7 +154,7 @@ function Set-SoundUnmute {
    [Audio]::Mute = $false
 }
 
-function Remove-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $Path) {
+function Remove-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $FolderPath) {
   <#
   .SYNOPSIS
   Un-pin a folder from Quick Access
@@ -162,7 +162,8 @@ function Remove-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $Path)
   .DESCRIPTION
   Un-pin a folder from the Quick Access drop down in Explorer
   #>
-    [QuickAccessFolderPinner]::RemoveFolderFromQuickAccess($Path)
+    $QuickAccess = New-Object -ComObject shell.application 
+    ($QuickAccess.Namespace("shell:::{679f85cb-0220-4080-b29b-5540cc05aab6}").Items() | where {$_.Path -eq "$FolderPath"}).InvokeVerb("unpinfromhome")
 }
 
 # function Add-QuickAccessFolderPin([Parameter(mandatory=$true)][String] $Path) {
