@@ -682,7 +682,7 @@ Set-PSReadlineOption -Colors @{
     "Number"    = "#f78c6c" #done
     "Member"    = "#ffcb6b" #done
     "Emphasis"  = "#f0a0c0"
-    "Error"     = "#902020"
+    "Error"     = "#ff869a"
 }
 
 
