@@ -14,8 +14,8 @@ if (!(Assert-Elevated)) {
 ###############################################################################
 Write-Host "Configuring System..." -ForegroundColor "Yellow"
 
-$gitUserName = Read-Host -Prompt "Enter git username"
-$gitEmail = Read-Host -Prompt "Enter git email"
+$gitUserName = "lee" #Read-Host -Prompt "Enter git username"
+$gitEmail = "lee" #Read-Host -Prompt "Enter git email"
 
 [Environment]::SetEnvironmentVariable("GIT_AUTHOR_NAME", $gitUserName, "User")
 [Environment]::SetEnvironmentVariable("GIT_COMMITTER_NAME", $env:GIT_AUTHOR_NAME, "User")
