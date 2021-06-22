@@ -674,7 +674,7 @@ Set-PSReadlineOption -Colors @{
     "Comment"   = "#697098" #done
     "Keyword"   = "#c792ea" #done
     "String"    = "#c3e88d" #done
-    "Operator"  = "#89ddff" #done
+    "Operator"  = "#c792ea" #done
     "Variable"  = "#ffcb6b" #done
     "Command"   = "#89ddff" #done
     "Parameter" = "#bfc7d5" #done
