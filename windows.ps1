@@ -671,16 +671,16 @@ Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # W
 # Theme: Palenight
 Set-PSReadlineOption -Colors @{
     "Default"   = "#bfc7d5"
-    "Comment"   = "#697098" #done
-    "Keyword"   = "#c792ea" #done
-    "String"    = "#c3e88d" #done
-    "Operator"  = "#c792ea" #done
-    "Variable"  = "#ffcb6b" #done
-    "Command"   = "#89ddff" #done
-    "Parameter" = "#bfc7d5" #done
-    "Type"      = "#c792ea" #done
-    "Number"    = "#f78c6c" #done
-    "Member"    = "#ffcb6b" #done
+    "Comment"   = "#697098"
+    "Keyword"   = "#c792ea"
+    "String"    = "#c3e88d"
+    "Operator"  = "#c792ea"
+    "Variable"  = "#ffcb6b"
+    "Command"   = "#89ddff"
+    "Parameter" = "#bfc7d5"
+    "Type"      = "#c792ea"
+    "Number"    = "#f78c6c"
+    "Member"    = "#ffcb6b"
     "Emphasis"  = "#f0a0c0"
     "Error"     = "#ff869a"
 }
