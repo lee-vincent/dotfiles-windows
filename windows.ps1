@@ -666,20 +666,21 @@ Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # W
 # Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#e8e8d3") # White (F)
 }
 
+
 # Customizing PoSh syntax
 # Theme: Palenight
 Set-PSReadlineOption -Colors @{
     "Default"   = "#bfc7d5"
-    "Command"   = "#82aaff"
-    "Comment"   = "#676e95"
-    "Keyword"   = "#c792ea"
-    "Number"    = "#f78c6c"
-    "Member"    = "#82aaff"
-    "Operator"  = "#89ddff"
-    "Parameter" = "#f78c6c"
-    "String"    = "#c3e88d"
-    "Type"      = "#ffcb6b"
-    "Variable"  = "#f07178"
+    "Comment"   = "#697098" #done
+    "Keyword"   = "#c792ea" #done
+    "String"    = "#c3e88d" #done
+    "Operator"  = "#89ddff" #done
+    "Variable"  = "#ffcb6b" #done
+    "Command"   = "#89ddff" #done
+    "Parameter" = "#bfc7d5" #done
+    "Type"      = "#c792ea" #done
+    "Number"    = "#f78c6c" #done
+    "Member"    = "#ffcb6b" #done
     "Emphasis"  = "#f0a0c0"
     "Error"     = "#902020"
 }
