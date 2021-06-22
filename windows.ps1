@@ -617,55 +617,96 @@ Set-ItemProperty $_ "InsertMode"           1
 # Enable Copy/Paste using Mouse
 Set-ItemProperty $_ "QuickEdit"            1
 # Background and Foreground Colors for Window: 2-byte; 1b background, 1b foreground; Color: 0-F
+# 0 refers to the hex color is in the Black (0) slot, and F refers to the hex color is in the White (F) slot
 Set-ItemProperty $_ "ScreenColors"         0x0F
+
 # Background and Foreground Colors for Popup Window: 2-byte; 1b background, 1b foreground; Color: 0-F
 Set-ItemProperty $_ "PopupColors"          0xF0
 # Adjust opacity between 30% and 100%: 0x4C to 0xFF -or- 76 to 255
 Set-ItemProperty $_ "WindowAlpha"          0xF2
 
+
+# The 16 colors in the Console color well (Persisted values are in BGR).
+# Theme: Palenight
+Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # Black (0)
+Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8796b0") # DarkBlue (1)
+Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#32374d") # DarkGreen (2)
+Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#959dcb") # DarkCyan (3)
+Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#f78c6c") # DarkRed (4)
+Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#ff5370") # DarkMagenta (5)
+Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#676e95") # DarkYellow (6)
+Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#959dcb") # Gray (7)
+Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#444267") # DarkGray (8)
+Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#82aaff") # Blue (9)
+Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#c3e88d") # Green (A)
+Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#89ddff") # Cyan (B)
+Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#f07178") # Red (C)
+Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#c792ea") # Magenta (D)
+Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#ffcb6b") # Yellow (E)
+Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)
+
+
 # The 16 colors in the Console color well (Persisted values are in BGR).
 # Theme: Jellybeans
-Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#151515") # Black (0)
-Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8197bf") # DarkBlue (1)
-Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#437019") # DarkGreen (2)
-Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#556779") # DarkCyan (3)
-Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#902020") # DarkRed (4)
-Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#540063") # DarkMagenta (5)
-Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#dad085") # DarkYellow (6)
-Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#888888") # Gray (7)
-Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#606060") # DarkGray (8)
-Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#7697d6") # Blue (9)
-Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#99ad6a") # Green (A)
-Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#c6b6ee") # Cyan (B)
-Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#cf6a4c") # Red (C)
-Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#f0a0c0") # Magenta (D)
-Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#fad07a") # Yellow (E)
-Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#e8e8d3") # White (F)
+# Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#151515") # Black (0)
+# Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8197bf") # DarkBlue (1)
+# Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#437019") # DarkGreen (2)
+# Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#556779") # DarkCyan (3)
+# Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#902020") # DarkRed (4)
+# Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#540063") # DarkMagenta (5)
+# Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#dad085") # DarkYellow (6)
+# Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#888888") # Gray (7)
+# Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#606060") # DarkGray (8)
+# Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#7697d6") # Blue (9)
+# Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#99ad6a") # Green (A)
+# Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#c6b6ee") # Cyan (B)
+# Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#cf6a4c") # Red (C)
+# Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#f0a0c0") # Magenta (D)
+# Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#fad07a") # Yellow (E)
+# Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#e8e8d3") # White (F)
 }
 
 # Customizing PoSh syntax
-# Theme: Jellybeans
+# Theme: Palenight
 Set-PSReadlineOption -Colors @{
-    "Default"   = "#e8e8d3"
-    "Comment"   = "#888888"
-    "Keyword"   = "#8197bf"
-    "String"    = "#99ad6a"
-    "Operator"  = "#c6b6ee"
-    "Variable"  = "#c6b6ee"
-    "Command"   = "#8197bf"
-    "Parameter" = "#e8e8d3"
-    "Type"      = "#fad07a"
-    "Number"    = "#cf6a4c"
-    "Member"    = "#fad07a"
+    "Default"   = "#bfc7d5"
+    "Command"   = "#82aaff"
+    "Comment"   = "#676e95"
+    "Keyword"   = "#c792ea"
+    "Number"    = "#f78c6c"
+    "Member"    = "#82aaff"
+    "Operator"  = "#89ddff"
+    "Parameter" = "#f78c6c"
+    "String"    = "#c3e88d"
+    "Type"      = "#ffcb6b"
+    "Variable"  = "#f07178"
     "Emphasis"  = "#f0a0c0"
     "Error"     = "#902020"
 }
+
+
+# Customizing PoSh syntax
+# Theme: Jellybeans
+# Set-PSReadlineOption -Colors @{
+#     "Default"   = "#e8e8d3"
+#     "Comment"   = "#888888"
+#     "Keyword"   = "#8197bf"
+#     "String"    = "#99ad6a"
+#     "Operator"  = "#c6b6ee"
+#     "Variable"  = "#c6b6ee"
+#     "Command"   = "#8197bf"
+#     "Parameter" = "#e8e8d3"
+#     "Type"      = "#fad07a"
+#     "Number"    = "#cf6a4c"
+#     "Member"    = "#fad07a"
+#     "Emphasis"  = "#f0a0c0"
+#     "Error"     = "#902020"
+# }
 
 # Remove property overrides from PowerShell and Bash shortcuts
 Reset-AllPowerShellShortcuts
 Reset-AllBashShortcuts
 
-$restartNow
 $restartNow = Read-Host -Prompt "Restart Now?"
 if ($restartNow -eq "Y") {
     Restart-Computer
