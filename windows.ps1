@@ -671,7 +671,7 @@ Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # W
 # Theme: Palenight
 #these need to be translated to the consol color palette to remain permanent
 Set-PSReadlineOption -Colors @{
-    "Default"   = "#bfc7d5"[]
+    "Default"   = "#bfc7d5"
     "Comment"   = "#697098"
     "Keyword"   = "#c792ea"
     "String"    = "#c3e88d"
