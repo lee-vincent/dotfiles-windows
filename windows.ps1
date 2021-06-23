@@ -624,21 +624,29 @@ Set-ItemProperty $_ "PopupColors"          0xF0
 # Adjust opacity between 30% and 100%: 0x4C to 0xFF -or- 76 to 255
 Set-ItemProperty $_ "WindowAlpha"          0xF2
 
-Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#ffcb6b") # DarkBlue (1) 
-Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#ffcb6b") # DarkRed (4)
-Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#ffcb6b") # DarkMagenta (5)
-Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#ffcb6b") # DarkYellow (6)
-Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#ffcb6b") # Gray (7)         Type
-Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#ffcb6b") # Blue (9)
-Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#ffcb6b") # Cyan (B)
-Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#ffcb6b") # Magenta (D)
 
-Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#697098") # DarkGreen (2)    Comment
+
+
+
+
+
+
+
+
 Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # Black (0)        Background
+Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8796b0") # DarkBlue (1) 
+Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#697098") # DarkGreen (2)    Comment
 Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#c3e88d") # DarkCyan (3)     String
+Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#f78c6c") # DarkRed (4)      (Number)
+Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#ff5370") # DarkMagenta (5)
+Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#676e95") # DarkYellow (6)
+Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#ffcb6b") # Gray (7)         Type & Member
 Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#c792ea") # DarkGray (8)     Parameter & Operator
+Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#82aaff") # Blue (9)
 Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#ffcb6b") # Green (A)        Variable & Keyword
+Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#f0a0c0") # Cyan (B)         Emphasis
 Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#ff869a") # Red (C)          Error
+Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#ffcb6b") # Magenta (D)
 Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#89ddff") # Yellow (E)       Command
 Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)        Foreground and default text & Number
 
@@ -663,6 +671,12 @@ Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # W
 # Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)
 }
 
+
+Set-PSReadLineOption -Colors @{
+
+    Number  = 'DarkRed'
+
+  }
 
 # Customizing PoSh syntax
 # Theme: Palenight
