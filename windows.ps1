@@ -624,24 +624,25 @@ Set-ItemProperty $_ "PopupColors"          0xF0
 # Adjust opacity between 30% and 100%: 0x4C to 0xFF -or- 76 to 255
 Set-ItemProperty $_ "WindowAlpha"          0xF2
 
-Set-PSReadlineOption -Colors @{
-    "Default"   = "#bfc7d5"
-    "Comment"   = "#697098"
-    "Keyword"   = "#c792ea"
-    "String"    = "#c3e88d"
-    "Operator"  = "#c792ea"
-    "Variable"  = "#ffcb6b"
-    "Command"   = "#89ddff"
-    "Parameter" = "#bfc7d5"
-    "Type"      = "#c792ea"
-    "Number"    = "#f78c6c"
-    "Member"    = "#ffcb6b"
-    "Emphasis"  = "#f0a0c0"
-    "Error"     = "#ff869a"
-}
+Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#89ddff") # Black (0)
+Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#ffffff") # DarkBlue (1)
+Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#ffffff") # DarkGreen (2)
+Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#ffffff") # DarkCyan (3)
+Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#ffffff") # DarkRed (4)
+Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#ffffff") # DarkMagenta (5)
+Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#ffffff") # DarkYellow (6)
+Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#ffffff") # Gray (7)
+Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#ffffff") # DarkGray (8)
+Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#ffffff") # Blue (9)
+Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#ffffff") # Green (A)
+Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#ffffff") # Cyan (B)
+Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#ffffff") # Red (C)
+Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#ffffff") # Magenta (D)
+Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#ffffff") # Yellow (E)
+Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#ffffff") # White (F)
+
 # The 16 colors in the Console color well (Persisted values are in BGR).
 # Theme: Palenight
-# Write-Host $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") -ForegroundColor "Yellow"
 # Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # Black (0)
 # Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8796b0") # DarkBlue (1)
 # Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#32374d") # DarkGreen (2)
