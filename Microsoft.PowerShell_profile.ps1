@@ -4,3 +4,11 @@
 Push-Location (Split-Path -parent $profile)
 "components-shell" | Where-Object {Test-Path "$_.ps1"} | ForEach-Object -process {Invoke-Expression ". .\$_.ps1"}
 Pop-Location
+
+Set-PSReadLineOption -Colors @{
+
+    Number  = 'DarkRed'
+    Keyword = 'DarkGray'
+    Type    = 'Cyan'
+
+}
