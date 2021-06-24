@@ -79,3 +79,5 @@ Set-Alias vim gvim
 
 # Set screen clearing shortcut
 Set-Alias cl Clear-Host
+Set-Alias -Name kc -Value kubectl
+Set-Alias -Name tf -Value terraform

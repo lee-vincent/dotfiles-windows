@@ -47,7 +47,7 @@ choco install python              --limit-output
 # choco install ruby                --limit-output
 
 # browsers
-choco install GoogleChrome          --limit-output; <# pin; evergreen #> choco pin add --name GoogleChrome        --limit-output
+choco install GoogleChrome          --limit-output
 
 # dev tools and frameworks
 choco install wireshark             --limit-output
