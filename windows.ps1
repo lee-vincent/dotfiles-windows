@@ -637,18 +637,18 @@ Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # B
 Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8796b0") # DarkBlue (1) 
 Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#697098") # DarkGreen (2)    Comment
 Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#c3e88d") # DarkCyan (3)     String
-Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#f78c6c") # DarkRed (4)      (Number)
+Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#f78c6c") # DarkRed (4)      (Number Override)
 Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#ff5370") # DarkMagenta (5)
 Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#676e95") # DarkYellow (6)
 Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#ffcb6b") # Gray (7)         Type & Member
-Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#c792ea") # DarkGray (8)     Parameter & Operator
+Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#c792ea") # DarkGray (8)     Parameter & Operator & (Keyword override)
 Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#82aaff") # Blue (9)
 Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#ffcb6b") # Green (A)        Variable & Keyword
-Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#f0a0c0") # Cyan (B)         Emphasis
+Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#f0a0c0") # Cyan (B)         Emphasis & (Type override)
 Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#ff869a") # Red (C)          Error
 Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#ffcb6b") # Magenta (D)
 Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#89ddff") # Yellow (E)       Command
-Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)        Foreground and default text & Number
+Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)        Foreground & Number
 
 
 # The 16 colors in the Console color well (Persisted values are in BGR).
@@ -666,7 +666,7 @@ Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # W
 # Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#c3e88d") # Green (A)
 # Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#89ddff") # Cyan (B)
 # Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#f07178") # Red (C)
-# Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#c792ea") # Magenta (D)
+# Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#c792ea") # Magenta (D
 # Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#ffcb6b") # Yellow (E)
 # Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)
 }
@@ -675,8 +675,10 @@ Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # W
 Set-PSReadLineOption -Colors @{
 
     Number  = 'DarkRed'
+    Keyword = 'DarkGray'
+    Type    = 'Cyan'
 
-  }
+}
 
 # Customizing PoSh syntax
 # Theme: Palenight
