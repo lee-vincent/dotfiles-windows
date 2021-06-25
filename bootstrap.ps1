@@ -13,6 +13,9 @@ Copy-Item -Path ./*.ps1 -Destination $profileDir -Exclude "bootstrap.ps1"
 Copy-Item -Path ./components/** -Destination $componentDir -Include **
 Copy-Item -Path ./home/** -Destination $home -Include **
 
+
+$gitUserName=""
+$gitEmail=""
 if(($null -eq $env:GIT_AUTHOR_NAME) -or ($null -eq $env:GIT_AUTHOR_EMAIL))
 {
     $gitUserName = Read-Host -Prompt "Enter git username"
@@ -21,22 +24,29 @@ if(($null -eq $env:GIT_AUTHOR_NAME) -or ($null -eq $env:GIT_AUTHOR_EMAIL))
     [Environment]::SetEnvironmentVariable("GIT_AUTHOR_NAME", $gitUserName, "User")
     [Environment]::SetEnvironmentVariable("GIT_AUTHOR_EMAIL", $gitEmail, "User")
 
-    Remove-Variable gitUserName
-    Remove-Variable gitEmail
+
+} else {
+    $gitUserName = $env:GIT_AUTHOR_NAME
+    $gitEmail = $env:GIT_AUTHOR_EMAIL
 }
+
 
 # this can only happen after the new .gitconfig is copied into $HOME
 # needs to be here and in deps.ps1 because only bootstrap.ps1 gets run on a settings update
+# using $gitEmail and gitUserName so i dont have to refresh env vars?
 if((Get-Command git.exe -ErrorAction SilentlyContinue))
 {
-    Write-Host "running: git config --global user.name $env:GIT_AUTHOR_NAME" -ForegroundColor "Yellow"
-    git config --global user.name $env:GIT_AUTHOR_NAME
+    Write-Host "running: git config --global user.name $gitUserName" -ForegroundColor "Yellow"
+    git config --global user.name $gitUserName
 
-    Write-Host "running: git config --global user.email $env:GIT_AUTHOR_EMAIL" -ForegroundColor "Yellow"
-    git config --global user.email $env:GIT_AUTHOR_EMAIL
+    Write-Host "running: git config --global user.email $gitEmail" -ForegroundColor "Yellow"
+    git config --global user.email $gitEmail
 } else {
     Write-Host "can't find git.exe" -ForegroundColor "Yellow"
 }
 
+
+Remove-Variable gitUserName
+Remove-Variable gitEmail
 Remove-Variable componentDir
 Remove-Variable profileDir
