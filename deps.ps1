@@ -60,8 +60,18 @@ choco install putty                 --limit-output
 # choco install adobereader /DesktopIcon /NoUpdates  --limit-output
 
 Refresh-Environment
-git config --global user.name $env:GIT_AUTHOR_NAME
-git config --global user.email $env:GIT_AUTHOR_EMAIL
+# this needs to be here because when running install.ps1 git.exe doesn't exists
+if((Get-Command git.exe -ErrorAction SilentlyContinue))
+{
+    Write-Host "running: git config --global user.name $env:GIT_AUTHOR_NAME" -ForegroundColor "Yellow"
+    git config --global user.name $env:GIT_AUTHOR_NAME
+
+    Write-Host "running: git config --global user.email $env:GIT_AUTHOR_EMAIL" -ForegroundColor "Yellow"
+    git config --global user.email $env:GIT_AUTHOR_EMAIL
+} else {
+    Write-Host "can't find git.exe" -ForegroundColor "Yellow"
+}
+
 
 $VSCodeExtensions = @(
     "CoenraadS.bracket-pair-colorizer-2"
