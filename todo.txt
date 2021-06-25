@@ -17,17 +17,7 @@
     { "key": "ctrl+g ctrl+p",           "command": "git.push"},
 ]
 
-install DISKSPD onto Machine
-https://docs.microsoft.com/en-us/azure-stack/hci/manage/diskspd-overview
-$client = new-object System.Net.WebClient
-$client.DownloadFile("https://github.com/microsoft/diskspd/releases/download/v2.0.21a/DiskSpd.zip","<ENTER_PATH>\DiskSpd-2.0.21a.zip")
-Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.0.21a.zip -DestinationPath C:\DISKSPD
 
-File Explorer - set the View to Details for everything
--change show windows ink workspace button on taskbar to no
-
--open posh as admin by default using task scheduler but not when vscode opens
-https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons
 draw.io plugin
 https://powershell-icons.s3.amazonaws.com/pink_powershell_ise.ico
 https://powershell-icons.s3.amazonaws.com/pink_powershell.ico
@@ -35,10 +25,3 @@ i like the pink ppowershell icon if im going to set up the shortcut to always ru
 https://www.reddit.com/r/PowerShell/comments/bp62nr/pink_powershell_icons_i_made_in_my_spare_time/
 AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell
 icons in this folder
-
-clean up file explorer System.IsPinnedToNamespaceTree in regedit
-
-start menu and taskbar shortcuts to C:\Users\Vinnie\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell needs target: %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -File C:\Users\Vinnie\Documents\WindowsPowerShell\posh_as_admin.ps1
-(does not have run as admin checked off)
-
--programmatically remove git username and email from .gitconfig on commits
