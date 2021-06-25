@@ -57,7 +57,7 @@ Push-Location $dotfilesInstallDir
 & .\bootstrap.ps1
 Pop-Location
 
-# $setUpWindowsDefaults = Read-Host -Prompt "Continue to setup Windows defaults?"
+$setUpWindowsDefaults = Read-Host -Prompt "Continue to setup Windows defaults?"
 if ($setUpWindowsDefaults -eq "Y") {
     $newpath= Split-Path -parent $profile
     $newProcessArgs="-nologo", "-file .\windows.ps1"
