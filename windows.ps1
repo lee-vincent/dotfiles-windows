@@ -183,6 +183,7 @@ if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Search")) {Ne
 if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace" -Type Folder | Out-Null}
 
 Remove-QuickAccessFolderPin("$HOME\Pictures")
+Add-QuickAccessFolderPin("$HOME")
 
 # Explorer: Show hidden files by default: Show Files: 1, Hide Files: 2
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Hidden" 1
