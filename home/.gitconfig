@@ -1,6 +1,4 @@
 ﻿# --global config files
-# new line testing hardlinks
-# new line from local repo testing hardlinks
 
 # -- WINDOWS -- #
 # C:\Users\Vinnie\.gitconfig
@@ -67,6 +65,7 @@
     whitespace = warn
 
 [core]
+    editor = \"C:\\\\Users\\\\Vinnie\\\\AppData\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\bin\\\\code.cmd\"
     # Use custom `.gitignore` and `.gitattributes`
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes

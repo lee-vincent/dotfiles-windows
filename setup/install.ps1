@@ -2,9 +2,6 @@ $account = "lee-vincent"
 $repo    = "dotfiles-windows"
 $branch  = "master"
 
-$localRepoDir = Join-Path $HOME "repos"
-if (![System.IO.Directory]::Exists($localRepoDir)) {[System.IO.Directory]::CreateDirectory($localRepoDir)}
-
 $dotfilesTempDir = Join-Path $env:TEMP "dotfiles"
 if (![System.IO.Directory]::Exists($dotfilesTempDir)) {[System.IO.Directory]::CreateDirectory($dotfilesTempDir)}
 $sourceFile = Join-Path $dotfilesTempDir "dotfiles.zip"
@@ -61,10 +58,10 @@ Push-Location $dotfilesInstallDir
 Pop-Location
 
 # $setUpWindowsDefaults = Read-Host -Prompt "Continue to setup Windows defaults?"
-# if ($setUpWindowsDefaults -eq "Y") {
+if ($setUpWindowsDefaults -eq "Y") {
     $newpath= Split-Path -parent $profile
     $newProcessArgs="-nologo", "-file .\windows.ps1"
     Start-Process powershell.exe -WorkingDirectory $newpath -ArgumentList $newProcessArgs
-# }
+}
 
 exit

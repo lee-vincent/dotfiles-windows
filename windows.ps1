@@ -14,16 +14,21 @@ if (!(Assert-Elevated)) {
 ###############################################################################
 Write-Host "Configuring System..." -ForegroundColor "Yellow"
 
-$gitUserName = "lee" #Read-Host -Prompt "Enter git username"
-$gitEmail = "lee" #Read-Host -Prompt "Enter git email"
+if(($null -eq $env:GIT_AUTHOR_NAME) -And ($null -eq $env:GIT_AUTHOR_EMAIL))
+{
+    $gitUserName = Read-Host -Prompt "Enter git username"
+    $gitEmail = Read-Host -Prompt "Enter git email"
 
-[Environment]::SetEnvironmentVariable("GIT_AUTHOR_NAME", $gitUserName, "User")
-[Environment]::SetEnvironmentVariable("GIT_COMMITTER_NAME", $env:GIT_AUTHOR_NAME, "User")
-[Environment]::SetEnvironmentVariable("GIT_AUTHOR_EMAIL", $gitEmail, "User")
-[Environment]::SetEnvironmentVariable("GIT_COMMITTER_EMAIL", $env:GIT_AUTHOR_EMAIL, "User")
+    [Environment]::SetEnvironmentVariable("GIT_AUTHOR_NAME", $gitUserName, "User")
+    [Environment]::SetEnvironmentVariable("GIT_COMMITTER_NAME", $env:GIT_AUTHOR_NAME, "User")
+    [Environment]::SetEnvironmentVariable("GIT_AUTHOR_EMAIL", $gitEmail, "User")
+    [Environment]::SetEnvironmentVariable("GIT_COMMITTER_EMAIL", $env:GIT_AUTHOR_EMAIL, "User")
 
-Remove-Variable gitUserName
-Remove-Variable gitEmail
+    Remove-Variable gitUserName
+    Remove-Variable gitEmail
+}
+
+
 
 # Set Computer Name
 #(Get-WmiObject Win32_ComputerSystem).Rename("VLEE-WS-WIN-VM") | Out-Null
@@ -194,16 +199,6 @@ if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\Windows Search")) {Ne
 if (!(Test-Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace")) {New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace" -Type Folder | Out-Null}
 
 Remove-QuickAccessFolderPin("$HOME\Pictures")
-
-New-Item -Path "$HOME" -Name "Reading" -ItemType "directory"
-$foldersToPin = @(
-    "$HOME\repos"
-    "$HOME\Reading"
-)
-
-foreach ($folder in $foldersToPin) {
-    Add-QuickAccessFolderPin($folder)
-}
 
 # Explorer: Show hidden files by default: Show Files: 1, Hide Files: 2
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "Hidden" 1
