@@ -89,12 +89,18 @@ $VSCodeExtensions = @(
     "ms-vscode.powershell"
     "redhat.vscode-yaml"
     "whizkydee.material-palenight-theme"
+
     # "GitHub.github-vscode-theme"
 )
+
+
 
 foreach ($Extension in $VSCodeExtensions) {   
     code --install-extension $Extension
 }
+
+# Fix a compatibility issue between vscode powershell integration and PackageManagement
+powershell.exe -NoLogo -NoProfile -Command '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Install-Module -Name PackageManagement -Force -MinimumVersion 1.4.6 -Scope CurrentUser -AllowClobber -Repository PSGallery'
 
 $MSIDwn="$home\Downloads\kernelupdate.msi"
 $UbuntuDwn="$home\Downloads\ubuntu-2004.appx"
