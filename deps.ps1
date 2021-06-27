@@ -32,7 +32,7 @@ Install-Module PSWindowsUpdate -Scope CurrentUser -Force
 ### Chocolatey
 Write-Host "Installing Desktop Utilities..." -ForegroundColor "Yellow"
 if ($null -eq (which cinst)) {
-    iex (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')
+    Invoke-Expression (new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1')
     Refresh-Environment
     choco feature enable -n=allowGlobalConfirmation
 }
