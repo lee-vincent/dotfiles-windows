@@ -562,8 +562,8 @@ Write-Host "Configuring Disk Cleanup..." -ForegroundColor "Yellow"
 ###############################################################################
 Write-Host "Configuring Console..." -ForegroundColor "Yellow"
 
-# Make 'Source Code Pro' an available Console font
-Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont' 000 'Source Code Pro'
+# # Make 'Source Code Pro' an available Console font
+# Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont' 000 'Source Code Pro'
 
 @(`
 "HKCU:\Console\%SystemRoot%_System32_bash.exe",`
@@ -584,7 +584,7 @@ Set-ItemProperty $_ "ScreenBufferSize"     0x0BB80078 # 3000h x 120w
 # Percentage of Character Space for Cursor: 25: Small, 50: Medium, 100: Large
 Set-ItemProperty $_ "CursorSize"           100
 # Name of display font
-Set-ItemProperty $_ "FaceName"             "Source Code Pro"
+Set-ItemProperty $_ "FaceName"             "Cascadia Code"
 # Font Family: Raster: 0, TrueType: 54
 Set-ItemProperty $_ "FontFamily"           54
 # Dimensions of font character in pixels, not Points: 8-byte; 4b height, 4b width. 0: Auto
@@ -633,27 +633,7 @@ Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#ffcb6b") # M
 Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#89ddff") # Yellow (E)       Command
 Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)        Foreground & Number
 
-
-# The 16 colors in the Console color well (Persisted values are in BGR).
-# Theme: Palenight
-# Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # Black (0)
-# Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8796b0") # DarkBlue (1)
-# Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#32374d") # DarkGreen (2)
-# Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#959dcb") # DarkCyan (3)
-# Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#f78c6c") # DarkRed (4)
-# Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#ff5370") # DarkMagenta (5)
-# Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#676e95") # DarkYellow (6)
-# Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#959dcb") # Gray (7)
-# Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#444267") # DarkGray (8)
-# Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#82aaff") # Blue (9)
-# Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#c3e88d") # Green (A)
-# Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#89ddff") # Cyan (B)
-# Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#f07178") # Red (C)
-# Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#c792ea") # Magenta (D
-# Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#ffcb6b") # Yellow (E)
-# Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)
 }
-
 
 Set-PSReadLineOption -Colors @{
 
@@ -662,27 +642,6 @@ Set-PSReadLineOption -Colors @{
     Type    = 'Cyan'
 
 }
-
-# Customizing PoSh syntax
-# Theme: Palenight
-#these need to be translated to the consol color palette to remain permanent
-# Set-PSReadlineOption -Colors @{
-#     "Default"   = "#bfc7d5"
-#     "Comment"   = "#697098"
-#     "Keyword"   = "#c792ea"
-#     "String"    = "#c3e88d"
-#     "Operator"  = "#c792ea"
-#     "Variable"  = "#ffcb6b"
-#     "Command"   = "#89ddff"
-#     "Parameter" = "#bfc7d5"
-#     "Type"      = "#c792ea"
-#     "Number"    = "#f78c6c"
-#     "Member"    = "#ffcb6b"
-#     "Emphasis"  = "#f0a0c0"
-#     "Error"     = "#ff869a"
-# }
-
-
 
 # Remove property overrides from PowerShell and Bash shortcuts
 Reset-AllPowerShellShortcuts
