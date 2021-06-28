@@ -43,7 +43,7 @@ if (Get-Command ls.exe -ErrorAction SilentlyContinue | Test-Path) {
 # curl: Use `curl.exe` if available
 if (Get-Command curl.exe -ErrorAction SilentlyContinue | Test-Path) {
     rm alias:curl -ErrorAction SilentlyContinue
-    # Set `ls` to call `ls.exe` and always use --color
+    # Set `curl` to call `curl.exe`
     ${function:curl} = { curl.exe @args }
     # Gzip-enabled `curl`
     ${function:gurl} = { curl --compressed @args }
