@@ -46,7 +46,7 @@ choco install git.install           --limit-output -params '"/GitAndUnixToolsOnP
 choco install python              --limit-output
 # choco install ruby                --limit-output
 
-
+choco install 7zip --limit-output
 choco install cascadiacode --limit-output
 # browsers
 choco install GoogleChrome          --limit-output
