@@ -14,6 +14,11 @@ Copy-Item -Path ./components/** -Destination $componentDir -Include **
 Copy-Item -Path ./home/** -Destination $home -Include **
 Copy-Item -Path ./pink_powershell.ico -Destination $profileDir
 
+if ($null -eq (Get-Command code -ErrorAction SilentlyContinue)) {
+    Copy-Item -Path .vscode/** -Destination "$HOME/AppData/Roaming/Code/User/"
+
+}
+
 $gitUserName=""
 $gitEmail=""
 if(($null -eq $env:GIT_AUTHOR_NAME) -or ($null -eq $env:GIT_AUTHOR_EMAIL))
