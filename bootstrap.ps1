@@ -18,6 +18,11 @@ Copy-Item -Path ./pink_powershell.ico -Destination $profileDir
 if (!(Test-Path "$HOME/AppData/Roaming/Code/User/")) {New-Item -Path "$HOME/AppData/Roaming/Code/User/" -Type Directory}
 Copy-Item -Path ./vscode/** -Destination "$HOME/AppData/Roaming/Code/User/"
 
+if (!(Test-Path "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\")) {New-Item -Path "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\" -Type Directory}
+Copy-Item -Path ./WindowsTerminal/** -Destination "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
+
+
+
 
 $gitUserName=""
 $gitEmail=""
