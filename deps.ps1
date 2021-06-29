@@ -56,6 +56,7 @@ choco install vscode                --limit-output
 choco install docker-desktop    --limit-output
 #choco install putty                 --limit-output
 # choco install adobereader /DesktopIcon /NoUpdates  --limit-output
+choco install microsoft-windows-terminal --limit-output
 
 Refresh-Environment
 
@@ -91,11 +92,7 @@ powershell.exe -NoLogo -NoProfile -Command '[Net.ServicePointManager]::SecurityP
 
 $MSIDwn="$home\Downloads\kernelupdate.msi"
 $UbuntuDwn="$home\Downloads\ubuntu-2004.appx"
-$WTDwn="$home\Downloads\wt.msixbundle"
 
-
-curl -L -o $WTDwn https://github.com/microsoft/terminal/releases/download/v1.8.1032.0/Microsoft.WindowsTerminalPreview_1.8.1032.0_8wekyb3d8bbwe.msixbundle
-Add-AppxPackage $WTDwn
 
 curl https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi --output $MSIDwn
 Start-Process msiexec.exe -Wait -ArgumentList "/I $MSIDwn"
