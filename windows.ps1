@@ -608,14 +608,6 @@ Set-ItemProperty $_ "PopupColors"          0xF0
 Set-ItemProperty $_ "WindowAlpha"          0xF2
 
 
-
-
-
-
-
-
-
-
 Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # Black (0)        Background
 Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8796b0") # DarkBlue (1) 
 Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#697098") # DarkGreen (2)    Comment

@@ -43,6 +43,19 @@ if((Get-Command git.exe -ErrorAction SilentlyContinue))
     git config --global user.email $gitEmail
 } else {
     Write-Host "can't find git.exe" -ForegroundColor "Yellow"
+    $gc = Get-Content $HOME\.gitconfig
+    $notfound = 1
+    $gc | ForEach-Object {
+        if($_ -eq '[user]') {
+            $notfound = 0
+        }
+    }
+    if($notfound) {
+        "[user]" | out-file -filepath $HOME\.gitconfig -Append -Encoding utf8
+        "`tname = $gitUserName" | out-file -filepath $HOME\.gitconfig -Append -Encoding utf8
+        "`temail = $gitEmail" | out-file -filepath $HOME\.gitconfig -Append -Encoding utf8
+    }
+
 }
 
 
