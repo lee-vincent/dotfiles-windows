@@ -14,10 +14,10 @@ Copy-Item -Path ./components/** -Destination $componentDir -Include **
 Copy-Item -Path ./home/** -Destination $home -Include **
 Copy-Item -Path ./pink_powershell.ico -Destination $profileDir
 
-if ((Get-Command code -ErrorAction SilentlyContinue)) {
-    Copy-Item -Path ./vscode/** -Destination "$HOME/AppData/Roaming/Code/User/"
 
-}
+if (!(Test-Path "$HOME/AppData/Roaming/Code/User/")) {New-Item -Path "$HOME/AppData/Roaming/Code/User/" -Type Directory}
+Copy-Item -Path ./vscode/** -Destination "$HOME/AppData/Roaming/Code/User/"
+
 
 $gitUserName=""
 $gitEmail=""
