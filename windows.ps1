@@ -276,6 +276,17 @@ Set-ItemProperty "HKLM:\Software\Policies\Microsoft\Windows\WindowsInkWorkspace"
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "HideSCAMeetNow" 1
 
 
+$appnames = @(
+    "Microsoft Store"
+    "Microsoft Edge"
+)
+
+foreach ($appname in $appnames) {
+    Remove-TaskbarPin(appname)
+}
+
+
+
 # SysTray: Hide the Action Center, Network, and Volume icons
 # Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "HideSCAHealth" 1  # Action Center
 # Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "HideSCANetwork" 1 # Network
