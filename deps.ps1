@@ -38,25 +38,22 @@ if ($null -eq (which cinst)) {
 }
 
 # system and cli
-choco install curl                  --limit-output
-choco install nuget.commandline     --limit-output
-choco install git.install           --limit-output -params '"/GitAndUnixToolsOnPath /NoShellIntegration"'
-choco install python              --limit-output
-
-
-#choco install 7zip --limit-output
-choco install cascadiacode --limit-output
-# browsers
-#choco install GoogleChrome          --limit-output
-
-# dev tools and frameworks
-#choco install wireshark             --limit-output
-choco install vscode                --limit-output
-#choco install visualstudio2019professional  --limit-output
-choco install docker-desktop    --limit-output
-#choco install putty                 --limit-output
-# choco install adobereader /DesktopIcon /NoUpdates  --limit-output
-choco install microsoft-windows-terminal --limit-output
+choco install curl                                  --limit-output
+choco install nuget.commandline                     --limit-output
+choco install git.install                           --limit-output -params '"/GitAndUnixToolsOnPath /NoShellIntegration"'
+choco install python                                --limit-output
+choco install 7zip                                  --limit-output
+choco install cascadiacode                          --limit-output
+choco install GoogleChrome                          --limit-output
+choco install wireshark                             --limit-output
+choco install vscode                                --limit-output
+choco install visualstudio2019professional          --limit-output
+choco install docker-desktop                        --limit-output
+choco install putty                                 --limit-output
+choco install adobereader /DesktopIcon /NoUpdates   --limit-output
+choco install microsoft-windows-terminal            --limit-output
+choco install awscli                                --limit-output
+# pin to taskbar in order
 
 Refresh-Environment
 
@@ -80,8 +77,6 @@ $VSCodeExtensions = @(
 
     # "GitHub.github-vscode-theme"
 )
-
-
 
 foreach ($Extension in $VSCodeExtensions) {   
     code --install-extension $Extension
