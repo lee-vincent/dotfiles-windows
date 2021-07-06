@@ -282,7 +282,7 @@ $appnames = @(
 )
 
 foreach ($appname in $appnames) {
-    Remove-TaskbarPin(appname)
+    Remove-TaskbarPin($appname)
 }
 
 
