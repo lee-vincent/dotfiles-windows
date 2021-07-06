@@ -13,3 +13,6 @@
 [
     { "key": "ctrl+g ctrl+p",           "command": "git.push"},
 ]
+
+turn off news and interests after windows update
+set chrome to default browser after install
