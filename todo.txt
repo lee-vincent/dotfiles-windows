@@ -19,6 +19,6 @@ set chrome to default browser after install
 
 use windows terminal by default for wsl and powershell, but make pink powershell open as admin using tasks
 
-detect file changes in $HOME\.gitconfig and dotfiles\.gitconfig# An example hook script to integrate Watchman
+detect changes in $HOME\.gitconfig and dotfiles\.gitconfig# An example hook script to integrate Watchman
 # (https://facebook.github.io/watchman/) with git to speed up detecting
 # new and modified files.
