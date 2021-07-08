@@ -3,28 +3,14 @@ function which($name) { Get-Command $name -ErrorAction SilentlyContinue | Select
 function touch($file) { "" | Out-File $file -Encoding ASCII }
 
 # Common Editing needs
-function Edit-Hosts { Invoke-Expression "sudo $(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
+function Edit-Hosts { Invoke-Expression "$(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $env:windir\system32\drivers\etc\hosts" }
 function Edit-Profile { Invoke-Expression "$(if($null -ne $env:EDITOR)  {$env:EDITOR } else { 'notepad' }) $profile" }
-
-# Sudo
-function sudo() {
-    if ($args.Length -eq 1) {
-        start-process $args[0] -verb "runAs"
-    }
-    if ($args.Length -gt 1) {
-        start-process $args[0] -ArgumentList $args[1..$args.Length] -verb "runAs"
-    }
-}
 
 # System Update - Update RubyGems, NPM, and their installed packages
 function System-Update() {
     Install-WindowsUpdate -IgnoreUserInput -IgnoreReboot -AcceptAll
     Update-Module
     Update-Help -Force
-    gem update --system
-    gem update
-    npm install npm -g
-    npm update -g
 }
 
 # Reload the Shell
