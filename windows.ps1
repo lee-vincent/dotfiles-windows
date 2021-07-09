@@ -599,7 +599,7 @@ Set-ItemProperty $_ "FaceName"             "Cascadia Code"
 # Font Family: Raster: 0, TrueType: 54
 Set-ItemProperty $_ "FontFamily"           54
 # Dimensions of font character in pixels, not Points: 8-byte; 4b height, 4b width. 0: Auto
-Set-ItemProperty $_ "FontSize"             0x00110000 # 17px height x auto width
+Set-ItemProperty $_ "FontSize"             0x00120000 # 18px height x auto width
 # Boldness of font: Raster=(Normal: 0, Bold: 1), TrueType=(100-900, Normal: 400)
 Set-ItemProperty $_ "FontWeight"           400
 # Number of commands in history buffer
