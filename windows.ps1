@@ -26,6 +26,9 @@ $user.Put() | Out-Null
 Remove-Variable user
 Remove-Variable myIdentity
 
+# Set the Time Zone to United States Eastern Standard time
+Set-TimeZone -Id "Eastern Standard Time"
+
 # Enable Developer Mode
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
 
