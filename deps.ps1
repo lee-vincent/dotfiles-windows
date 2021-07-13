@@ -59,7 +59,6 @@ choco install sketchbook                            --limit-output
 
 Refresh-Environment
 
-
 $VSCodeExtensions = @(
     "CoenraadS.bracket-pair-colorizer-2"
     "hashicorp.terraform"
@@ -76,7 +75,6 @@ $VSCodeExtensions = @(
     "ms-vscode.powershell"
     "redhat.vscode-yaml"
     "whizkydee.material-palenight-theme"
-
     # "GitHub.github-vscode-theme"
 )
 
@@ -87,15 +85,22 @@ foreach ($Extension in $VSCodeExtensions) {
 # Fix a compatibility issue between vscode powershell integration and PackageManagement
 powershell.exe -NoLogo -NoProfile -Command '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Install-Module -Name PackageManagement -Force -MinimumVersion 1.4.6 -Scope CurrentUser -AllowClobber -Repository PSGallery'
 
-$MSIDwn="$home\Downloads\kernelupdate.msi"
-$UbuntuDwn="$home\Downloads\ubuntu-2004.appx"
+# Wacom Tablet Installer
+if (!(Test-Path "C:\Program Files\Tablet\Wacom\32\WacomDesktopCenter.exe")) 
+{
+    $wacom = curlex "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.43-3.exe"
+    $wacom_path = join-path $env:Temp $wacom.Name
+    Start-Process $wacom_path -Wait
+}
 
-
-curl https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi --output $MSIDwn
-Start-Process msiexec.exe -Wait -ArgumentList "/I $MSIDwn"
+# Install Linux Kernel Updates for WSL2
+$kernel_update = curlex "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
+$kernel_update_path = join-path $env:Temp $kernel_update.Name
+Start-Process msiexec.exe -Wait -ArgumentList "/I $kernel_update_path"
 wsl --set-default-version 2
 
-curl -L -o $UbuntuDwn https://aka.ms/wslubuntu2004
-Add-AppxPackage $UbuntuDwn
+# Install Ubuntu 20.04
+$ubuntu_2004 = curlex "https://aka.ms/wslubuntu2004"
+Add-AppxPackage $ubuntu_2004
+# This is the Microsoft WSL executable name of the Ubuntu distribution
 ubuntu2004.exe
-
