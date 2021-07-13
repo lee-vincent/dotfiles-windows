@@ -41,6 +41,8 @@ Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -
 # https://blogs.vmware.com/workstation/2020/05/vmware-workstation-now-supports-hyper-v-mode.html
 Enable-WindowsOptionalFeature -online -FeatureName HypervisorPlatform -All -NoRestart
 
+# Enable Hyper-V to run Windows VMs
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 ###############################################################################
 ### Privacy                                                                   #

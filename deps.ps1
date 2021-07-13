@@ -54,6 +54,7 @@ choco install adobereader /DesktopIcon /NoUpdates   --limit-output
 choco install microsoft-windows-terminal            --limit-output
 choco install awscli                                --limit-output
 choco install terraform                             --limit-output
+choco install sketchbook                            --limit-output
 # pin to taskbar in order
 
 Refresh-Environment
