@@ -624,7 +624,8 @@ Set-ItemProperty $_ "ScreenColors"         0x0F
 # Background and Foreground Colors for Popup Window: 2-byte; 1b background, 1b foreground; Color: 0-F
 Set-ItemProperty $_ "PopupColors"          0xF0
 # Adjust opacity between 30% and 100%: 0x4C to 0xFF -or- 76 to 255
-Set-ItemProperty $_ "WindowAlpha"          0xF2
+# 0xE4 == 228 == 90%
+Set-ItemProperty $_ "WindowAlpha"          0xE4
 
 
 Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # Black (0)        Background
