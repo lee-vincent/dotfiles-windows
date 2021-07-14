@@ -15,6 +15,7 @@
 ]
 
 use windows terminal by default for wsl and powershell, but make pink powershell open as admin using tasks
+change transparency of windows terminal in settings.json
 
 detect file changes in $HOME\.gitconfig and dotfiles\.gitconfig# An example hook script to integrate Watchman
 # (https://facebook.github.io/watchman/) with git to speed up detecting
