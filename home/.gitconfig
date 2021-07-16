@@ -129,3 +129,7 @@
 [credential]
 	helper = manager-core
 	# helper = "!h() { exec '/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe' $@; }; h"
+[user]
+	name = lee-vincent
+	email = vinnie@vinnielee.io
+    
