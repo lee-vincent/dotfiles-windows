@@ -13,6 +13,13 @@ Copy-Item -Path ./*.ps1 -Destination $profileDir -Exclude "bootstrap.ps1"
 Copy-Item -Path ./components/** -Destination $componentDir -Include **
 Copy-Item -Path ./pink_powershell.ico -Destination $profileDir
 
+# if this is the first install on a clean machine the symlinks should not yet exists
+# advise user
+if((Get-Item "$HOME\.gitconfig" -ErrorAction SilentlyContinue | Select-Object LinkType).LinkType -ne "SymbolicLink")
+{
+    write-host "No Symlink found for $HOME\.gitconfig make sure you runs deps.ps1 or set manually"
+}
+
 $gitUserName=""
 $gitEmail=""
 if(($null -eq $env:GIT_AUTHOR_NAME) -or ($null -eq $env:GIT_AUTHOR_EMAIL))
