@@ -112,7 +112,7 @@
                 "name": "Ubuntu-20.04",
                 "padding": "8",
                 "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "//wsl$/Ubuntu-20.04/home/vlee/",
+                "startingDirectory": "//wsl$/Ubuntu-20.04/home/vlee/"
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
