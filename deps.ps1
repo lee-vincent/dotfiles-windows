@@ -85,6 +85,40 @@ foreach ($Extension in $VSCodeExtensions) {
 # Fix a compatibility issue between vscode powershell integration and PackageManagement
 powershell.exe -NoLogo -NoProfile -Command '[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Install-Module -Name PackageManagement -Force -MinimumVersion 1.4.6 -Scope CurrentUser -AllowClobber -Repository PSGallery'
 
+# For common settings files that get modified frequently outside of git, set up symlinks
+# Currently these are the settings.json files for Visual Studio Code, Windows Terminal, and ~\.gitconfig
+if (!(Test-Path "$HOME/repos/"))
+{
+    New-Item -ItemType Directory -Path "$HOME/repos/"
+}
+
+if (!(Test-Path "$HOME/repos/dotfiles-windows"))
+{
+    git clone https://github.com/lee-vincent/dotfiles-windows.git "$HOME/repos/dotfiles-windows"
+} 
+else
+{
+    Write-Host "WARNING: folder already exists ($HOME\repos\dotfiles-windows) check symlinks manually" -ForegroundColor "Red"
+}
+
+# Visual Studio Code settings.json symlink
+Remove-Item "$HOME/AppData/Roaming/Code/User/settings.json" -ErrorAction SilentlyContinue
+New-Item -ItemType SymbolicLink -Path "$HOME/AppData/Roaming/Code/User/settings.json" -Target "$HOME\repos\dotfiles-windows\vscode\settings.json"
+
+# Windows Terminal settings.json symlink
+Remove-Item "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" -ErrorAction SilentlyContinue
+New-Item -ItemType SymbolicLink -Path "$HOME\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json" -Target "$HOME\repos\dotfiles-windows\WindowsTerminal\settings.json"
+
+# ~\.gitconfig symlink
+Remove-Item "$HOME\.gitconfig" -ErrorAction SilentlyContinue
+Remove-Item "$HOME\.gitignore" -ErrorAction SilentlyContinue
+Remove-Item "$HOME\.gitattributes" -ErrorAction SilentlyContinue
+
+New-Item -ItemType SymbolicLink -Path "$HOME/.gitconfig" -Target "$HOME\repos\dotfiles-windows\home\.gitconfig"
+New-Item -ItemType SymbolicLink -Path "$HOME/.gitignore" -Target "$HOME\repos\dotfiles-windows\home\.gitignore"
+New-Item -ItemType SymbolicLink -Path "$HOME/.gitattributes" -Target "$HOME\repos\dotfiles-windows\home\.gitattributes"
+
+
 # Wacom Tablet Installer
 if (!(Test-Path "C:\Program Files\Tablet\Wacom\32\WacomDesktopCenter.exe")) 
 {
