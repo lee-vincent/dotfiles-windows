@@ -29,35 +29,6 @@ if(($null -eq $env:GIT_AUTHOR_NAME) -or ($null -eq $env:GIT_AUTHOR_EMAIL))
     $gitEmail = $env:GIT_AUTHOR_EMAIL
 }
 
-
-# this can only happen after the new .gitconfig is copied into $HOME
-# needs to be here and in deps.ps1 because only bootstrap.ps1 gets run on a settings update
-# using $gitEmail and gitUserName so i dont have to refresh env vars?
-if((Get-Command git.exe -ErrorAction SilentlyContinue))
-{
-    Write-Host "running: git config --global user.name $gitUserName" -ForegroundColor "Yellow"
-    git config --global user.name $gitUserName
-
-    Write-Host "running: git config --global user.email $gitEmail" -ForegroundColor "Yellow"
-    git config --global user.email $gitEmail
-} else {
-    Write-Host "can't find git.exe" -ForegroundColor "Yellow"
-    $gc = Get-Content $HOME\.gitconfig
-    $notfound = 1
-    $gc | ForEach-Object {
-        if($_ -eq '[user]') {
-            $notfound = 0
-        }
-    }
-    if($notfound) {
-        "[user]" | out-file -filepath $HOME\.gitconfig -Append -Encoding utf8
-        "`tname = $gitUserName" | out-file -filepath $HOME\.gitconfig -Append -Encoding utf8
-        "`temail = $gitEmail" | out-file -filepath $HOME\.gitconfig -Append -Encoding utf8
-    }
-
-}
-
-
 Remove-Variable gitUserName
 Remove-Variable gitEmail
 Remove-Variable componentDir
