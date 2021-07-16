@@ -82,3 +82,4 @@ Set-Alias cl Clear-Host
 Set-Alias kc kubectl
 Set-Alias tf terraform
 Set-Alias gh Get-Help
+Set-Alias rmi Remove-Item
