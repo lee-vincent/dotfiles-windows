@@ -5,8 +5,7 @@
     vscode WSL2 Ubuntu::        /home/vlee/.vscode-server/data/Machine/settings.json
     Windows Terminal Windows::  C:\Users\Vinnie\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
 --add mouse line scroll settings in windows.ps1
---why doesnt source code pro install
-    --or install github font form vscode into powershell?
+
 --pin items to taskbar https://stackoverflow.com/questions/31720595/pin-program-to-taskbar-using-ps-in-windows-10
 --do i have any custom vscode keybindings?? C:\Users\Vinnie\AppData\Roaming\Code\User\keybindings.json
 // Place your key bindings in this file to override the defaults
@@ -14,9 +13,14 @@
     { "key": "ctrl+g ctrl+p",           "command": "git.push"},
 ]
 
-use windows terminal by default for wsl and powershell, but make pink powershell open as admin using tasks
-change transparency of windows terminal in settings.json
-
-detect file changes in $HOME\.gitconfig and dotfiles\.gitconfig# An example hook script to integrate Watchman
+--detect file changes in $HOME\.gitconfig and dotfiles\.gitconfig# An example hook script to integrate Watchman
 # (https://facebook.github.io/watchman/) with git to speed up detecting
 # new and modified files.
+
+--add borg back (dedupe and compression) for windows file system
+    -cron jobs for backups?
+    -private s3 repository target?
+
+--automated testing of dotfiles-windows in azure when Microsoft releases updates to Windows 10
+    -how to detect Windows 10 Updates?
+    -Use Terraform or ARM templates to deploy Win10 VMs
