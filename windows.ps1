@@ -8,6 +8,8 @@ if (!(Assert-Elevated)) {
    exit
 }
 
+###
+# sohuld have diff. template for win2019 REG add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fPromptForPassword /t REG_DWORD /d 0 /f
 
 ###############################################################################
 ### Security and Identity                                                     #
