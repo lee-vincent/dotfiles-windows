@@ -1,3 +1,11 @@
+dynamically update Remove-ClutterFolders.xml task with SID and Computer\Username
+<Author>VLEE-WS-P\Vinnie</Author> 
+<Principals>
+    <Principal id="Author">
+      <UserId>S-1-5-21-2133641409-2209656088-113430463-1001</UserId>
+Vinnie SID vlee-wsl2 = S-1-5-21-2928964723-3158099532-1277140548-1001
+Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
+
 --add powershell extension ignore problem settings to file tracking in home/
     "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1" ------ in posh> write-host "$(split-path -parent $profile)\PSScriptAnalyzerSettings.psd1)"
 --add windows terminal and vscode settings json files to tracking in home/
