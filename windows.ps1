@@ -8,6 +8,8 @@ if (!(Assert-Elevated)) {
    exit
 }
 
+###
+# sohuld have diff. template for win2019 REG add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fPromptForPassword /t REG_DWORD /d 0 /f
 
 ###############################################################################
 ### Security and Identity                                                     #
@@ -197,6 +199,10 @@ Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advan
 # Explorer: Remove OneDrive folder from Explorer navigation panel
 Set-ItemProperty "HKCU:\Software\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" "System.IsPinnedToNameSpaceTree" 0
 Set-ItemProperty "HKCU:\Software\Classes\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" "System.IsPinnedToNameSpaceTree" 0
+
+# Explorer: Remove Adobde Creative Cloud folder from Explorer navigation panel
+Set-ItemProperty "HKCR:\CLSID\{0E270DAA-1BE6-48F2-AC49-1E197B65F930}" "System.IsPinnedToNameSpaceTree" 0
+Set-ItemProperty "HKCU:\SOFTWARE\Classes\CLSID\{0E270DAA-1BE6-48F2-AC49-1E197B65F930}" "System.IsPinnedToNameSpaceTree" 0
 
 # Explorer: Remove Desktop From This PC
 Remove-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}"
