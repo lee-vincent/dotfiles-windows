@@ -1,3 +1,10 @@
+install.ps1 --> bootstrap.ps1 --> windows.ps1 --> 
+
+
+-- install packages using winget install --id Git.Git -e --source winget
+-- mozilla preferences files?
+
+
 dynamically update Remove-ClutterFolders.xml task with SID and Computer\Username
 <Author>VLEE-WS-P\Vinnie</Author> 
 <Principals>
@@ -14,6 +21,7 @@ Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
     Windows Terminal Windows::  C:\Users\Vinnie\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
 --add mouse line scroll settings in windows.ps1
 
+
 --pin items to taskbar https://stackoverflow.com/questions/31720595/pin-program-to-taskbar-using-ps-in-windows-10
 --do i have any custom vscode keybindings?? C:\Users\Vinnie\AppData\Roaming\Code\User\keybindings.json
 // Place your key bindings in this file to override the defaults
@@ -28,10 +36,6 @@ Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
 --add borg back (dedupe and compression) for windows file system
     -cron jobs for backups?
     -private s3 repository target?
-
---automated testing of dotfiles-windows in azure when Microsoft releases updates to Windows 10
-    -how to detect Windows 10 Updates?
-    -Use Terraform or ARM templates to deploy Win10 VMs
 
 --WSL2 Setup
     (common utilities)
