@@ -9,6 +9,7 @@ $ClutterFolders = @(
     "$HOME\Saved Games"
     "$HOME\Videos"
     "$HOME\Searches"
+    "$HOME\ansel"
 )
 
 foreach ($Folder in $ClutterFolders) {
