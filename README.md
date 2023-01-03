@@ -34,7 +34,7 @@ Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 > ~\
 
 ```posh
-Set-ExecutionPolicy Unrestricted -Force; iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/master/setup/install.ps1'))
+Set-ExecutionPolicy Unrestricted -Force; iex ((new-object net.webclient).DownloadString('https://raw.github.com/lee-vincent/dotfiles-windows/win11/setup/install.ps1'))
 ```
 
 To update later on, just re-run that command.
