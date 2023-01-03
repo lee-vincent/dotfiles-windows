@@ -29,11 +29,6 @@ if(($null -eq $env:GIT_AUTHOR_NAME) -or ($null -eq $env:GIT_AUTHOR_EMAIL))
 
     [Environment]::SetEnvironmentVariable("GIT_AUTHOR_NAME", $gitUserName, "User")
     [Environment]::SetEnvironmentVariable("GIT_AUTHOR_EMAIL", $gitEmail, "User")
-
-
-} else {
-    $gitUserName = $env:GIT_AUTHOR_NAME
-    $gitEmail = $env:GIT_AUTHOR_EMAIL
 }
 
 Remove-Variable gitUserName

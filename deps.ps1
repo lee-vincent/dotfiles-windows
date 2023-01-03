@@ -22,7 +22,7 @@ Get-PackageProvider NuGet -Force | Out-Null
 #Get-PackageProvider Chocolatey -Force
 #Set-PackageSource -Name chocolatey -Trusted
 
-
+# winget install --id Git.Git -e --source winget
 ### Install PowerShell Modules
 Write-Host "Installing PowerShell Modules..." -ForegroundColor "Yellow"
 Install-Module Posh-Git -Scope CurrentUser -Force
