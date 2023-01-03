@@ -132,3 +132,5 @@
 [user]
 	name = lee-vincent
 	email = vinnie@vinnielee.io
+[safe]
+	directory = C:/Users/vinnie/repos/dotfiles-windows

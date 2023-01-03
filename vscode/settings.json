@@ -1,23 +1,68 @@
+// vscode v1.74.0
 {
-    "terminal.integrated.shell.linux": "/bin/bash",
+    "security.workspace.trust.untrustedFiles": "open",
+    "security.workspace.trust.banner": "never",
+    "security.workspace.trust.startupPrompt": "never",
     "terminal.integrated.scrollback": 5000,
-    "workbench.settings.editor": "json",
     "terminal.integrated.copyOnSelection": true,
     // works best when windows "choose how many lines you scroll = 2"
     "terminal.integrated.mouseWheelScrollSensitivity": 0.2,
-    "terraform.languageServer": {
-        "external": true,
-        "pathToBinary": "",
-        "args": [
-            "serve"
-        ],
-        "maxNumberOfProblems": 100,
-        "trace.server": "off"
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash",
+            "args": ["-li"]
+        }
     },
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Palenight (Mild Contrast)",
+    "workbench.settings.editor": "json",
     "git.showPushSuccessNotification": true,
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
-    "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Palenight (Mild Contrast)",
-    "security.workspace.trust.untrustedFiles": "open"
+    "redhat.telemetry.enabled": false,
+    "window.zoomLevel": -1,
+    //AWS Toolkit Extension Settings
+    "aws.telemetry": false,
+    // CloudFormatoin Extension Settings - Custom tags for the RedHat YAML parser to use
+    "files.associations": {
+        "*.template": "yaml",
+        "*.yaml": "yaml",
+        "*.yml": "yaml",
+        "*.cform": "yaml"
+    },
+    "yaml.customTags": [
+        "!And",
+        "!If",
+        "!Not",
+        "!Equals",
+        "!Or",
+        "!FindInMap sequence",
+        "!Base64",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!Select",
+        "!Select sequence",
+        "!Split",
+        "!Join sequence",
+        "!And sequence",
+        "!If sequence",
+        "!Not sequence",
+        "!Equals sequence",
+        "!Or sequence",
+        "!FindInMap",
+        "!Join",
+        "!Sub sequence",
+        "!ImportValue sequence",
+        "!Split sequence"
+    ],
+    // Enable/disable default YAML formatter (requires restart)
+    "yaml.format.enable": true,
+    // HashiCorp Terraform Extension Settings
+    "terraform.experimentalFeatures.prefillRequiredFields": true
 }
