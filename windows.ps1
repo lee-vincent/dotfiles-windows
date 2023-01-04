@@ -148,42 +148,6 @@ Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliver
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" "DisableStartupSound" 1
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation" "DisableStartupSound" 1
 
-
-###############################################################################
-### Devices, Power, and Startup                                               #
-###############################################################################
-Write-Host "Configuring Devices, Power, and Startup..." -ForegroundColor "Yellow"
-
-# Power: Disable Hibernation
-#powercfg /hibernate off
-
-# Power: Set standby delay to 24 hours
-# powercfg /change /standby-timeout-ac 1440
-
-# Disable certain Intel(R) Dynamic Tuning Technology Settings so your laptop doesnt watch your face and lock/shut the screen off
-# when you take a bathroom break...weird technology...commrade
-
-# Disable (Display Off After Lock Control)
-# when plugged in
-#powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
-# when on battery
-#powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb53 000
-
-# Disable (Walk Away Lock Control)
-# when plugged in
-#powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
-# when on battery
-#powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb41 000
-
-# Disable (Walk Away Lock Control With External Monitor)
-# when plugged in
-#powercfg /setacvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
-# when on battery
-#powercfg /setdcvalueindex 49ef8fc0-bb7f-488e-b6a0-f1fc77ec649b 8880ae65-32e6-4fce-a2ef-2bdee8c7cb40 8880ae65-32e6-4fce-a2ef-2bdee8c7cb48 000
-
-# SSD: Disable SuperFetch
-# Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" "EnableSuperfetch" 0
-
 ###############################################################################
 ### Explorer, Taskbar, and System Tray                                        #
 ###############################################################################
@@ -371,7 +335,7 @@ Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name WallPaper -Value ""
 
 # Titlebar: Disable theme colors on titlebar
 Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\DWM" "ColorPrevalence" 1
-Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\DWM" "AccentColor" 4282006074
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\DWM" "AccentColor" 4285822330
 
 # Recycle Bin: Disable Delete Confirmation Dialog
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" "ConfirmFileDelete" 0
@@ -593,63 +557,59 @@ Write-Host "Configuring Console..." -ForegroundColor "Yellow"
         New-Item -path $_ -ItemType Folder | Out-Null
     }
 
-# Dimensions of window, in characters: 8-byte; 4b height, 4b width. Max: 0x7FFF7FFF (32767h x 32767w)
-Set-ItemProperty $_ "WindowSize"           0x002D0078 # 45h x 120w
-# Dimensions of screen buffer in memory, in characters: 8-byte; 4b height, 4b width. Max: 0x7FFF7FFF (32767h x 32767w)
-Set-ItemProperty $_ "ScreenBufferSize"     0x0BB80078 # 3000h x 120w
-# Percentage of Character Space for Cursor: 25: Small, 50: Medium, 100: Large
-Set-ItemProperty $_ "CursorSize"           100
-# Name of display font
-Set-ItemProperty $_ "FaceName"             "Cascadia Code"
-# Font Family: Raster: 0, TrueType: 54
-Set-ItemProperty $_ "FontFamily"           54
-# Dimensions of font character in pixels, not Points: 8-byte; 4b height, 4b width. 0: Auto
-Set-ItemProperty $_ "FontSize"             0x00120000 # 18px height x auto width
-# Boldness of font: Raster=(Normal: 0, Bold: 1), TrueType=(100-900, Normal: 400)
-Set-ItemProperty $_ "FontWeight"           400
-# Number of commands in history buffer
-Set-ItemProperty $_ "HistoryBufferSize"    50
-# Discard duplicate commands
-Set-ItemProperty $_ "HistoryNoDup"         1
-# Typing Mode: Overtype: 0, Insert: 1
-Set-ItemProperty $_ "InsertMode"           1
-# Enable Copy/Paste using Mouse
-Set-ItemProperty $_ "QuickEdit"            1
-# Background and Foreground Colors for Window: 2-byte; 1b background, 1b foreground; Color: 0-F
-# 0 refers to the hex color is in the Black (0) slot, and F refers to the hex color is in the White (F) slot
-Set-ItemProperty $_ "ScreenColors"         0x0F
-# Background and Foreground Colors for Popup Window: 2-byte; 1b background, 1b foreground; Color: 0-F
-Set-ItemProperty $_ "PopupColors"          0xF0
-# Adjust opacity between 30% and 100%: 0x4C to 0xFF -or- 76 to 255
-# 0xE4 == 228 == 90%
-Set-ItemProperty $_ "WindowAlpha"          0xE4
+    # Dimensions of window, in characters: 8-byte; 4b height, 4b width. Max: 0x7FFF7FFF (32767h x 32767w)
+    Set-ItemProperty $_ "WindowSize"           0x002D0078 # 45h x 120w
+    # Dimensions of screen buffer in memory, in characters: 8-byte; 4b height, 4b width. Max: 0x7FFF7FFF (32767h x 32767w)
+    Set-ItemProperty $_ "ScreenBufferSize"     0x0BB80078 # 3000h x 120w
+    # Percentage of Character Space for Cursor: 25: Small, 50: Medium, 100: Large
+    Set-ItemProperty $_ "CursorSize"           100
+    # Name of display font
+    Set-ItemProperty $_ "FaceName"             "Cascadia Code"
+    # Font Family: Raster: 0, TrueType: 54
+    Set-ItemProperty $_ "FontFamily"           54
+    # Dimensions of font character in pixels, not Points: 8-byte; 4b height, 4b width. 0: Auto
+    Set-ItemProperty $_ "FontSize"             0x00120000 # 18px height x auto width
+    # Boldness of font: Raster=(Normal: 0, Bold: 1), TrueType=(100-900, Normal: 400)
+    Set-ItemProperty $_ "FontWeight"           400
+    # Number of commands in history buffer
+    Set-ItemProperty $_ "HistoryBufferSize"    50
+    # Discard duplicate commands
+    Set-ItemProperty $_ "HistoryNoDup"         1
+    # Typing Mode: Overtype: 0, Insert: 1
+    Set-ItemProperty $_ "InsertMode"           1
+    # Enable Copy/Paste using Mouse
+    Set-ItemProperty $_ "QuickEdit"            1
+    # Background and Foreground Colors for Window: 2-byte; 1b background, 1b foreground; Color: 0-F
+    # 0 refers to the hex color is in the Black (0) slot, and F refers to the hex color is in the White (F) slot
+    Set-ItemProperty $_ "ScreenColors"         0x0F
+    # Background and Foreground Colors for Popup Window: 2-byte; 1b background, 1b foreground; Color: 0-F
+    Set-ItemProperty $_ "PopupColors"          0xF0
+    # Adjust opacity between 30% and 100%: 0x4C to 0xFF -or- 76 to 255
+    # 0xE4 == 228 == 90%
+    Set-ItemProperty $_ "WindowAlpha"          0xE4
 
-
-Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # Black (0)        Background
-Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8796b0") # DarkBlue (1) 
-Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#697098") # DarkGreen (2)    Comment
-Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#c3e88d") # DarkCyan (3)     String
-Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#f78c6c") # DarkRed (4)      (Number Override)
-Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#ff5370") # DarkMagenta (5)
-Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#676e95") # DarkYellow (6)
-Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#ffcb6b") # Gray (7)         Type & Member
-Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#c792ea") # DarkGray (8)     Parameter & Operator & (Keyword override)
-Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#82aaff") # Blue (9)
-Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#ffcb6b") # Green (A)        Variable & Keyword
-Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#f0a0c0") # Cyan (B)         Emphasis & (Type override)
-Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#ff869a") # Red (C)          Error
-Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#ffcb6b") # Magenta (D)
-Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#89ddff") # Yellow (E)       Command
-Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)        Foreground & Number
-
+    Set-ItemProperty $_ "ColorTable00"         $(Convert-ConsoleColor "#292d3e") # Black (0)        Background
+    Set-ItemProperty $_ "ColorTable01"         $(Convert-ConsoleColor "#8796b0") # DarkBlue (1) 
+    Set-ItemProperty $_ "ColorTable02"         $(Convert-ConsoleColor "#697098") # DarkGreen (2)    Comment
+    Set-ItemProperty $_ "ColorTable03"         $(Convert-ConsoleColor "#c3e88d") # DarkCyan (3)     String
+    Set-ItemProperty $_ "ColorTable04"         $(Convert-ConsoleColor "#f78c6c") # DarkRed (4)      (Number Override)
+    Set-ItemProperty $_ "ColorTable05"         $(Convert-ConsoleColor "#ff5370") # DarkMagenta (5)
+    Set-ItemProperty $_ "ColorTable06"         $(Convert-ConsoleColor "#676e95") # DarkYellow (6)
+    Set-ItemProperty $_ "ColorTable07"         $(Convert-ConsoleColor "#ffcb6b") # Gray (7)         Type & Member
+    Set-ItemProperty $_ "ColorTable08"         $(Convert-ConsoleColor "#c792ea") # DarkGray (8)     Parameter & Operator & (Keyword override)
+    Set-ItemProperty $_ "ColorTable09"         $(Convert-ConsoleColor "#82aaff") # Blue (9)
+    Set-ItemProperty $_ "ColorTable10"         $(Convert-ConsoleColor "#ffcb6b") # Green (A)        Variable & Keyword
+    Set-ItemProperty $_ "ColorTable11"         $(Convert-ConsoleColor "#f0a0c0") # Cyan (B)         Emphasis & (Type override)
+    Set-ItemProperty $_ "ColorTable12"         $(Convert-ConsoleColor "#ff869a") # Red (C)          Error
+    Set-ItemProperty $_ "ColorTable13"         $(Convert-ConsoleColor "#ffcb6b") # Magenta (D)
+    Set-ItemProperty $_ "ColorTable14"         $(Convert-ConsoleColor "#89ddff") # Yellow (E)       Command
+    Set-ItemProperty $_ "ColorTable15"         $(Convert-ConsoleColor "#bfc7d5") # White (F)        Foreground & Number
 }
 
 Set-PSReadLineOption -Colors @{
-
     Number  = 'DarkRed'
     Keyword = 'DarkGray'
     Type    = 'Cyan'
-
 }
 
 # Remove property overrides from PowerShell and Bash shortcuts
