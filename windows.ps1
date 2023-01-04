@@ -8,31 +8,42 @@ if (!(Assert-Elevated)) {
    exit
 }
 
-###
-# sohuld have diff. template for win2019 REG add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fPromptForPassword /t REG_DWORD /d 0 /f
-
 ###############################################################################
 ### Security and Identity                                                     #
 ###############################################################################
 Write-Host "Configuring System..." -ForegroundColor "Yellow"
 
 # Set Computer Name
-#(Get-WmiObject Win32_ComputerSystem).Rename("VLEE-WS-WIN-VM") | Out-Null
+$setComputerName = Read-Host -Prompt "Setup or change computer name?"
+if ($setComputerName.ToUpper() -eq "Y") {
+    $computerName = Read-Host -Prompt "Enter Computer Name - e.g. VLEE-XPS"
+    (Get-WmiObject Win32_ComputerSystem).Rename($computerName) | Out-Null
+    [Environment]::SetEnvironmentVariable("NAME", $computerName, "System")
+    Remove-Variable setComputerName
+    Remove-Variable computerName
+}
 
 ## Set Display Name for my account. Use only if you are not using a Microsoft Account
-$myIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-$user = Get-WmiObject Win32_UserAccount | Where-Object {$_.Caption -eq $myIdentity.Name}
-$user.FullName = "Vinnie"
-$user.Put() | Out-Null
-
-Remove-Variable user
-Remove-Variable myIdentity
+$setAccountDisplayName = Read-Host -Prompt "Setup or change Display Name for my account?"
+if ($setAccountDisplayName.ToUpper() -eq "Y") {
+    $accountDisplayName = Read-Host -Prompt "Enter Display Name - e.g. Vinnie Lee"
+    $myIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+    $user = Get-WmiObject Win32_UserAccount | Where-Object {$_.Caption -eq $myIdentity.Name}
+    $user.FullName = $accountDisplayName
+    $user.Put() | Out-Null
+    Remove-Variable setAccountDisplayName
+    Remove-Variable accountDisplayName
+    Remove-Variable user
+    Remove-Variable myIdentity
+}
 
 # Set the Time Zone to United States Eastern Standard time
 Set-TimeZone -Id "Eastern Standard Time"
 
+exit
+
 # Enable Developer Mode
-Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
+# Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
 
 # Enable WSL2
 # https://docs.microsoft.com/en-us/windows/wsl/install-win10

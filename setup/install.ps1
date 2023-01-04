@@ -58,7 +58,7 @@ Push-Location $dotfilesInstallDir
 Pop-Location
 
 $setUpWindowsDefaults = Read-Host -Prompt "Continue to setup Windows defaults?"
-if ($setUpWindowsDefaults -eq "Y") {
+if ($setUpWindowsDefaults.ToUpper() -eq "Y") {
     $newpath= Split-Path -parent $profile
     $newProcessArgs="-nologo", "-file .\windows.ps1"
     Start-Process powershell.exe -WorkingDirectory $newpath -ArgumentList $newProcessArgs

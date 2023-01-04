@@ -21,14 +21,6 @@ Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
     Windows Terminal Windows::  C:\Users\Vinnie\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
 --add mouse line scroll settings in windows.ps1
 
-
---pin items to taskbar https://stackoverflow.com/questions/31720595/pin-program-to-taskbar-using-ps-in-windows-10
---do i have any custom vscode keybindings?? C:\Users\Vinnie\AppData\Roaming\Code\User\keybindings.json
-// Place your key bindings in this file to override the defaults
-[
-    { "key": "ctrl+g ctrl+p",           "command": "git.push"},
-]
-
 --detect file changes in $HOME\.gitconfig and dotfiles\.gitconfig# An example hook script to integrate Watchman
 # (https://facebook.github.io/watchman/) with git to speed up detecting
 # new and modified files.
@@ -39,8 +31,7 @@ Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
 
 --WSL2 Setup
     (common utilities)
-    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
-    sudo apt-get install unzip
+    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl unzip
 
     (terraform)
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
@@ -52,3 +43,5 @@ Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
+    rm -rf ~/aws/ ~/awscliv2.zip
+    
