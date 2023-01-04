@@ -1,11 +1,9 @@
-﻿# --global config files
+﻿# --global .gitconfig files
 
 # -- WINDOWS -- #
 # C:\Users\Vinnie\.gitconfig
-# \\wsl$\Ubuntu-20.04\home\vlee\.gitconfig
 
 # -- WSL -- #
-# /mnt/c/Users/Vinnie/.gitconfig
 # /home/vlee/.gitconfig
 
 [alias]
@@ -65,7 +63,7 @@
     whitespace = warn
 
 [core]
-    editor = \"C:\\\\Users\\\\Vinnie\\\\AppData\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\bin\\\\code.cmd\"
+    editor = \"C:\\\\Users\\\\vinnie\\\\AppData\\\\Local\\\\Programs\\\\Microsoft VS Code\\\\bin\\\\code.cmd\"
     # Use custom `.gitignore` and `.gitattributes`
     excludesfile = ~/.gitignore
     attributesfile = ~/.gitattributes
@@ -119,18 +117,12 @@
 [push]
     default = simple
 
-; git automatically pre-prends git-credential- to the helper and will resolve to
-; C:\\Program Files\\Git\\mingw64\\libexec\\git-core\\git-credential-manager-core.exe
-; git-credential-manager-core.exe is preferred for Windows and WSL as it
-; securely stores github personal authentication tokens for https repos
-; using Windows Credential Manager
-; git credential-manager-core get
-; git credential-manager-core store
 [credential]
 	helper = manager-core
-	# helper = "!h() { exec '/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe' $@; }; h"
+
 [user]
 	name = lee-vincent
 	email = vinnie@vinnielee.io
+    
 [safe]
 	directory = C:/Users/vinnie/repos/dotfiles-windows
