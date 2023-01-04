@@ -559,8 +559,9 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
     }
 
     # Dimensions of window, in characters: 8-byte; 4b height, 4b width. Max: 0x7FFF7FFF (32767h x 32767w)
-    Set-ItemProperty $_ "WindowSize"           0x002D0078 # 45h x 120w
+    Set-ItemProperty $_ "WindowSize"           0x00280078 # 40h x 120w
     # Dimensions of screen buffer in memory, in characters: 8-byte; 4b height, 4b width. Max: 0x7FFF7FFF (32767h x 32767w)
+    # how far you can scroll back up
     Set-ItemProperty $_ "ScreenBufferSize"     0x0BB80078 # 3000h x 120w
     # Percentage of Character Space for Cursor: 25: Small, 50: Medium, 100: Large
     Set-ItemProperty $_ "CursorSize"           100
