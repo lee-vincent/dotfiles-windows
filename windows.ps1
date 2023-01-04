@@ -613,6 +613,9 @@ Set-PSReadLineOption -Colors @{
     Keyword = 'DarkGray'
     Type    = 'Cyan'
 }
+
+Read-Host -Prompt "Open PowerShell`nRight click top banner to access Properties`nLayout tab`n`tdeselect Let system position window`n`tchange Window Position to 85/85`nTerminal tab`n`tchange Default Terminal Application to Windows Console Host`nwhen finished press enter"
+
 exit
 # Remove property overrides from PowerShell and Bash shortcuts
 Reset-AllPowerShellShortcuts
