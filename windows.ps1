@@ -47,14 +47,14 @@ Set-TimeZone -Id "Eastern Standard Time"
 # Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
 
 # Enable WSL2
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
-Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All -NoRestart
+Enable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -All -NoRestart
 
 # Enable features required to run VMWare Workstation 16 side by side WSL2
-Enable-WindowsOptionalFeature -online -FeatureName HypervisorPlatform -All -NoRestart
+Enable-WindowsOptionalFeature -online -FeatureName "HypervisorPlatform" -All -NoRestart
 
 # Enable Hyper-V to run Windows VMs
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" -All
 
 ###############################################################################
 ### Privacy                                                                   #
