@@ -40,22 +40,20 @@ if ($setAccountDisplayName.ToUpper() -eq "Y") {
 # Set the Time Zone to United States Eastern Standard time
 Set-TimeZone -Id "Eastern Standard Time"
 
-exit
-
 # Enable Developer Mode
 # Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" "AllowDevelopmentWithoutDevLicense" 1
 
 # Enable WSL2
-# https://docs.microsoft.com/en-us/windows/wsl/install-win10
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -All -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
 
 # Enable features required to run VMWare Workstation 16 side by side WSL2
-# https://blogs.vmware.com/workstation/2020/05/vmware-workstation-now-supports-hyper-v-mode.html
 Enable-WindowsOptionalFeature -online -FeatureName HypervisorPlatform -All -NoRestart
 
 # Enable Hyper-V to run Windows VMs
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+
+exit
 
 ###############################################################################
 ### Privacy                                                                   #
@@ -185,10 +183,6 @@ Write-Host "Configuring Devices, Power, and Startup..." -ForegroundColor "Yellow
 
 # SSD: Disable SuperFetch
 # Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" "EnableSuperfetch" 0
-
-# TODO:
-# programs that run on startup??
-#\Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run
 
 ###############################################################################
 ### Explorer, Taskbar, and System Tray                                        #
@@ -480,21 +474,6 @@ Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File 
 
 # Turn Off System Sounds
 Set-ItemProperty "HKCU:\AppEvents\Schemes" "(Default)" ".None"
-
-# Disable "Window Snap" Automatic Window Arrangement
-# Set-ItemProperty "HKCU:\Control Panel\Desktop" "WindowArrangementActive" 0
-
-# Disable automatic fill to space on Window Snap
-# Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "SnapFill" 0
-
-# Disable showing what can be snapped next to a window
-# Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "SnapAssist" 0
-
-# Disable automatic resize of adjacent windows on snap
-# Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" "JointResize" 0
-
-# Disable auto-correct
-# Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\TabletTip\1.7" "EnableAutocorrection" 0
 
 ###############################################################################
 ### Windows Update & Application Updates                                      #
