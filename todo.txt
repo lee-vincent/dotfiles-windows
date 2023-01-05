@@ -44,4 +44,9 @@ Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
     unzip awscliv2.zip
     sudo ./aws/install
     rm -rf ~/aws/ ~/awscliv2.zip
+
+    git credential manager
+    curl -LO https://aka.ms/gcm/linux-install-source.sh &&
+    sh ./linux-install-source.sh &&
+    git-credential-manager-core configure
     
