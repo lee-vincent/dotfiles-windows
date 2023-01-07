@@ -75,7 +75,6 @@ $VSCodeExtensions = @(
     "ms-vscode.powershell"
     "redhat.vscode-yaml"
     "whizkydee.material-palenight-theme"
-    # "GitHub.github-vscode-theme"
 )
 
 foreach ($Extension in $VSCodeExtensions) {   
