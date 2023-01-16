@@ -3,6 +3,9 @@ install.ps1 --> bootstrap.ps1 --> windows.ps1 -->
 - razer basilisk pro v3 dpi 2400
 -- install packages using winget install --id Git.Git -e --source winget
 -- mozilla preferences files? - userprefs.js or some profile thing
+    - profile folder:
+    - C:\Users\vinnie\AppData\Roaming\Mozilla\Firefox\Profiles\30mrtnrw.default-release
+    layout.css.devPixelsPerPx = 2.3
 
 
 dynamically update Remove-ClutterFolders.xml task with SID and Computer\Username
