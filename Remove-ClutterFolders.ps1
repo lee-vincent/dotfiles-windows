@@ -10,6 +10,7 @@ $ClutterFolders = @(
     "$HOME\Videos"
     "$HOME\Searches"
     "$HOME\ansel"
+    "$HOME\.ms-ad"
 )
 
 foreach ($Folder in $ClutterFolders) {

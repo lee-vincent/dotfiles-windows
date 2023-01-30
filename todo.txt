@@ -11,14 +11,13 @@ install.ps1 --> bootstrap.ps1 --> windows.ps1 -->
 
 dynamically update Remove-ClutterFolders.xml task with SID and Computer\Username
 PS C:\Users\vinnie> $mysid=(get-localuser -Name vinnie).sid.Value
+go to task scheduler and import the xml - choose not to use password/local resources only and run with highest privilege
 PS C:\Users\vinnie> Write-Host $mysid
 S-1-5-21-782633745-1410770413-1650820348-1003
 <Author>VLEE-WS-P\Vinnie</Author> 
 <Principals>
     <Principal id="Author">
       <UserId>S-1-5-21-2133641409-2209656088-113430463-1001</UserId>
-Vinnie SID vlee-wsl2 = S-1-5-21-2928964723-3158099532-1277140548-1001
-Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
 
 
 --add windows terminal and vscode settings json files to tracking in home/
