@@ -10,6 +10,9 @@ install.ps1 --> bootstrap.ps1 --> windows.ps1 -->
 
 
 dynamically update Remove-ClutterFolders.xml task with SID and Computer\Username
+PS C:\Users\vinnie> $mysid=(get-localuser -Name vinnie).sid.Value
+PS C:\Users\vinnie> Write-Host $mysid
+S-1-5-21-782633745-1410770413-1650820348-1003
 <Author>VLEE-WS-P\Vinnie</Author> 
 <Principals>
     <Principal id="Author">
@@ -17,8 +20,7 @@ dynamically update Remove-ClutterFolders.xml task with SID and Computer\Username
 Vinnie SID vlee-wsl2 = S-1-5-21-2928964723-3158099532-1277140548-1001
 Vinnie SID vlee-wsl-p = S-1-5-21-2133641409-2209656088-113430463-1001
 
---add powershell extension ignore problem settings to file tracking in home/
-    "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1" ------ in posh> write-host "$(split-path -parent $profile)\PSScriptAnalyzerSettings.psd1)"
+
 --add windows terminal and vscode settings json files to tracking in home/
     vscode Windows::            /C:/Users/Vinnie/AppData/Roaming/Code/User/settings.json
     vscode WSL2 Ubuntu::        /home/vlee/.vscode-server/data/Machine/settings.json
