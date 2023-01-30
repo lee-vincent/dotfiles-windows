@@ -11,7 +11,6 @@ New-Item $componentDir -ItemType Directory -Force -ErrorAction SilentlyContinue
 # Copy-Item overwrites existing files
 Copy-Item -Path ./*.ps1 -Destination $profileDir -Exclude "bootstrap.ps1"
 Copy-Item -Path ./components/** -Destination $componentDir -Include **
-Copy-Item -Path ./pink_powershell.ico -Destination $profileDir
 
 # if this is the first install on a clean machine the symlinks should not yet exists
 # advise user

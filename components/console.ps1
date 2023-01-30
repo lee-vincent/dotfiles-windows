@@ -109,7 +109,8 @@ function Reset-PowerShellShortcut {
             $shortcut = $shell.CreateShortcut("$(Resolve-Path $path)")
             $shortcut.Arguments = "-nologo"
             $profileDir = Split-Path -parent $profile
-            $shortcut.IconLocation = "$profileDir\pink_powershell.ico"
+            $componentDir = Join-Path $profileDir "components"
+            $shortcut.IconLocation = "$componentDir\pink_powershell.ico"
             $shortcut.Save()
             [Runtime.Interopservices.Marshal]::ReleaseComObject($shortcut) | Out-Null
             [Runtime.Interopservices.Marshal]::ReleaseComObject($shell) | Out-Null
