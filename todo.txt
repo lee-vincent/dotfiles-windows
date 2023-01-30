@@ -6,6 +6,7 @@ install.ps1 --> bootstrap.ps1 --> windows.ps1 -->
     - profile folder:
     - C:\Users\vinnie\AppData\Roaming\Mozilla\Firefox\Profiles\30mrtnrw.default-release
     layout.css.devPixelsPerPx = 2.3
+    compact = true
 
 
 dynamically update Remove-ClutterFolders.xml task with SID and Computer\Username
