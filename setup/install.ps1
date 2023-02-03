@@ -60,7 +60,7 @@ Pop-Location
 $setUpWindowsDefaults = Read-Host -Prompt "Continue to setup Windows defaults?"
 if ($setUpWindowsDefaults.ToUpper() -eq "Y") {
     $newpath= Split-Path -parent $profile
-    $newProcessArgs="-nologo", "-file .\windows11.ps1"
+    $newProcessArgs="-nologo", "-file .\windows.ps1"
     Start-Process powershell.exe -WorkingDirectory $newpath -ArgumentList $newProcessArgs
 }
 
