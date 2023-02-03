@@ -11,6 +11,10 @@ $ClutterFolders = @(
     "$HOME\Searches"
     "$HOME\ansel"
     "$HOME\.ms-ad"
+    "$HOME\Documents\Custom Office Templates"
+    "$HOME\Documents\Dell"
+    "$HOME\Documents\OneNote Notebooks"
+    "$HOME\Documents\PowerShell"
 )
 
 foreach ($Folder in $ClutterFolders) {
