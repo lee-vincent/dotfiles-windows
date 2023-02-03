@@ -14,7 +14,7 @@ $ClutterFolders = @(
     "$HOME\Documents\Custom Office Templates"
     "$HOME\Documents\Dell"
     "$HOME\Documents\OneNote Notebooks"
-    "$HOME\Documents\PowerShell"
+    # "$HOME\Documents\PowerShell"
 )
 
 foreach ($Folder in $ClutterFolders) {
