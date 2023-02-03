@@ -117,6 +117,9 @@ New-Item -ItemType SymbolicLink -Path "$HOME/.gitconfig" -Target "$HOME\repos\do
 New-Item -ItemType SymbolicLink -Path "$HOME/.gitignore" -Target "$HOME\repos\dotfiles-windows\home\.gitignore"
 New-Item -ItemType SymbolicLink -Path "$HOME/.gitattributes" -Target "$HOME\repos\dotfiles-windows\home\.gitattributes"
 
+(get-item "$HOME\.gitconfig" -Force).Attributes += 'Hidden'
+(get-item "$HOME\.gitignore" -Force).Attributes += 'Hidden'
+(get-item "$HOME\.gitattributes" -Force).Attributes += 'Hidden'
 
 # Wacom Tablet Installer
 # if (!(Test-Path "C:\Program Files\Tablet\Wacom\32\WacomDesktopCenter.exe")) 
