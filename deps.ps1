@@ -119,12 +119,12 @@ New-Item -ItemType SymbolicLink -Path "$HOME/.gitattributes" -Target "$HOME\repo
 
 
 # Wacom Tablet Installer
-if (!(Test-Path "C:\Program Files\Tablet\Wacom\32\WacomDesktopCenter.exe")) 
-{
-    $wacom = curlex "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.43-3.exe"
-    $wacom_path = join-path $env:Temp $wacom.Name
-    Start-Process $wacom_path -Wait
-}
+# if (!(Test-Path "C:\Program Files\Tablet\Wacom\32\WacomDesktopCenter.exe")) 
+# {
+#     $wacom = curlex "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.43-3.exe"
+#     $wacom_path = join-path $env:Temp $wacom.Name
+#     Start-Process $wacom_path -Wait
+# }
 
 # Install Linux Kernel Updates for WSL2
 $kernel_update = curlex "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
