@@ -40,6 +40,8 @@ if ($setAccountDisplayName.ToUpper() -eq "Y") {
     Remove-Variable myIdentity
 }
 
+#taskbar size in windows 11 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarSi = 0,1,2
+
 # Set the Time Zone to United States Eastern Standard time
 Set-TimeZone -Id "Eastern Standard Time"
 
