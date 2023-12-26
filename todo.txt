@@ -1,4 +1,10 @@
 install.ps1 --> bootstrap.ps1 --> windows.ps1 --> 
+old context menu
+New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Value "" -Force
+
+
+remove windows 11 gallery - this works
+reg delete 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace_41040327\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}'
 
 - razer basilisk pro v3 dpi 2400
 -- install packages using winget install --id Git.Git -e --source winget
