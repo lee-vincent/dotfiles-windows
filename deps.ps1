@@ -111,10 +111,10 @@ New-Item -ItemType SymbolicLink -Path "$HOME/.gitattributes" -Target "$HOME\repo
 (get-item "$HOME\.gitattributes" -Force).Attributes += 'Hidden'
 
 # Install Linux Kernel Updates for WSL2
-# $kernel_update = curlex "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
-# $kernel_update_path = join-path $env:Temp $kernel_update.Name
-# Start-Process msiexec.exe -Wait -ArgumentList "/I $kernel_update_path"
-# wsl --set-default-version 2
+$kernel_update = curlex "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
+$kernel_update_path = join-path $env:Temp $kernel_update.Name
+Start-Process msiexec.exe -Wait -ArgumentList "/I $kernel_update_path"
+wsl --set-default-version 2
 
 # Install Ubuntu 20.04
 # $ubuntu_2004 = curlex "https://aka.ms/wslubuntu2004"
