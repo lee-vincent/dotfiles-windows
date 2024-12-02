@@ -1,68 +1,208 @@
 // vscode v1.74.0
 {
+    "tailwindCSS.emmetCompletions": true,
     "security.workspace.trust.untrustedFiles": "open",
     "security.workspace.trust.banner": "never",
     "security.workspace.trust.startupPrompt": "never",
     "terminal.integrated.scrollback": 5000,
     "terminal.integrated.copyOnSelection": true,
     // works best when windows "choose how many lines you scroll = 2"
-    "terminal.integrated.mouseWheelScrollSensitivity": 0.2,
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.09,
     "terminal.integrated.profiles.linux": {
         "bash": {
             "path": "/bin/bash",
             "icon": "terminal-bash",
-            "args": ["-li"]
+            "args": [
+                "-li"
+            ]
         }
     },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.suggest.showInterfaces": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": true,
+    "editor.showDeprecated": true,
+    "autoimport.useSemiColon": false,
+    "editor.inlineSuggest.enabled": true,
     "terminal.integrated.defaultProfile.linux": "bash",
+    "cssPeek.peekFromLanguages": [
+        "html",
+        "django-html",
+        "laravel-blade",
+        "razor",
+        "vue",
+        "blade",
+        "pug",
+        "jade",
+        "handlebars",
+        "php",
+        "twig",
+        "md",
+        "nunjucks",
+        "javascript",
+        "javascriptreact",
+        "erb",
+        "typescript",
+        "typescriptreact",
+        "HTML (Eex)",
+        "html-eex",
+        "ejs",
+        "vue"
+    ],
     "workbench.startupEditor": "none",
     "workbench.colorTheme": "Palenight (Mild Contrast)",
-    "workbench.settings.editor": "json",
+    "editor.smoothScrolling": true,
+    "explorer.decorations.colors": true,
+    "workbench.list.smoothScrolling": true,
     "git.showPushSuccessNotification": true,
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "redhat.telemetry.enabled": false,
-    "window.zoomLevel": -1,
     //AWS Toolkit Extension Settings
     "aws.telemetry": false,
-    // CloudFormatoin Extension Settings - Custom tags for the RedHat YAML parser to use
+    // CloudFormation Extension Settings - Custom tags for the RedHat YAML parser to use
     "files.associations": {
         "*.template": "yaml",
         "*.yaml": "yaml",
         "*.yml": "yaml",
-        "*.cform": "yaml"
+        "*.cform": "yaml",
+        "*.ddb-json": "ignore"
     },
     "yaml.customTags": [
         "!And",
+        "!And sequence",
         "!If",
+        "!If sequence",
         "!Not",
+        "!Not sequence",
         "!Equals",
+        "!Equals sequence",
         "!Or",
+        "!Or sequence",
+        "!FindInMap",
         "!FindInMap sequence",
         "!Base64",
+        "!Join",
+        "!Join sequence",
         "!Cidr",
         "!Ref",
         "!Sub",
+        "!Sub sequence",
         "!GetAtt",
         "!GetAZs",
         "!ImportValue",
+        "!ImportValue sequence",
         "!Select",
         "!Select sequence",
         "!Split",
-        "!Join sequence",
-        "!And sequence",
-        "!If sequence",
-        "!Not sequence",
-        "!Equals sequence",
-        "!Or sequence",
-        "!FindInMap",
-        "!Join",
-        "!Sub sequence",
-        "!ImportValue sequence",
         "!Split sequence"
     ],
     // Enable/disable default YAML formatter (requires restart)
     "yaml.format.enable": true,
     // HashiCorp Terraform Extension Settings
-    "terraform.experimentalFeatures.prefillRequiredFields": true
+    "terraform.experimentalFeatures.prefillRequiredFields": true,
+    "editor.accessibilitySupport": "off",
+    "vs-kubernetes": {
+        "vscode-kubernetes.kubectl-path.linux": "/home/vlee/.local/state/vs-kubernetes/tools/kubectl/kubectl",
+        "vscode-kubernetes.minikube-path.linux": "/home/vlee/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube",
+        "vscode-kubernetes.helm-path.linux": "/home/vlee/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vs-kubernetes.minikube-show-information-expiration": "2023-08-04T08:43:15.109Z"
+    },
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "editor.mouseWheelScrollSensitivity": 0.45,
+    "editor.mouseWheelZoom": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    // Add scopes name to this array
+                    "comment"
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
+    "editor.minimap.showSlider": "always",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "editor.stickyScroll.enabled": false,
+    "files.exclude": {
+        "**/.DS_Store": false
+    },
+    "remote.SSH.remotePlatform": {
+        "192.168.47.132": "linux",
+        "remote-host": "linux"
+    },
+    "aws.resources.enabledResources": [
+        "AWS::CloudTrail::EventDataStore",
+        "AWS::CloudTrail::Trail",
+        "AWS::EC2::VPC"
+    ],
+    "prettier.useEditorConfig": false,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.wordBasedSuggestions": "matchingDocuments",
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.tabCompletion": "on",
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.suggest.showStructs": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "aws.suppressPrompts": {
+        "yamlExtPrompt": true
+    },
+    "editor.fontFamily": "'Sauce-Code-Pro-Nerd-Font-Complete-Windows-Compatible',Consolas, 'Courier New', monospace",
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "editor.suggest.showVariables": true,
+    "editor.suggest.showFields": true,
+    "editor.suggest.showEnumMembers": true,
+    "editor.suggest.showConstants": true,
+    "editor.suggest.showUsers": true,
+    "editor.suggest.showEvents": true,
+    "editor.suggest.showEnums": true,
+    "editor.suggest.showUnits": true,
+    "editor.suggest.showWords": true,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "prettier.bracketSameLine": true,
+    "window.zoomLevel": -0.5,
+    "css.validate": false,
+    "remote.autoForwardPortsSource": "hybrid",
+    "flake8.args": [
+        "--max-line-length=300"
+    ],
+    "editor.indentSize": "tabSize",
+    "editor.detectIndentation": false,
+    "jupyter.askForKernelRestart": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "notebook.output.scrolling": true,
+    "amazonQ.telemetry": false,
+    "remote.SSH.configFile": "C:\\Users\\vinnie\\.ssh\\config",
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
 }
