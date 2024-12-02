@@ -171,10 +171,10 @@ Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides" "UserSetting_DisableStartupSound" 1
 
 # Power: Disable Hibernation
-powercfg /hibernate off
+# powercfg /hibernate off
 
 # Power: Set standby delay to 24 hours
-powercfg /change /standby-timeout-ac 1440
+# powercfg /change /standby-timeout-ac 1440
 
 # SSD: Disable SuperFetch: Enable: 1, Disable: 0
 Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" "EnableSuperfetch" 0

@@ -8,12 +8,9 @@ if (!(Assert-Elevated)) {
    exit
 }
 
-
-
 ### Update Help for Modules
 Write-Host "Updating Help..." -ForegroundColor "Yellow"
 Update-Help -Force
-
 
 ### Package Providers
 Write-Host "Installing Package Providers..." -ForegroundColor "Yellow"
@@ -22,7 +19,6 @@ Get-PackageProvider NuGet -Force | Out-Null
 #Get-PackageProvider Chocolatey -Force
 #Set-PackageSource -Name chocolatey -Trusted
 
-# winget install --id Git.Git -e --source winget
 ### Install PowerShell Modules
 Write-Host "Installing PowerShell Modules..." -ForegroundColor "Yellow"
 Install-Module Posh-Git -Scope CurrentUser -Force
@@ -38,23 +34,16 @@ if ($null -eq (which cinst)) {
 }
 
 # system and cli
-choco install curl                                  --limit-output
+winget install --id Git.Git -e --source winget
+winget install --id cURL.cURL -e --source winget
+winget install --id 7zip.7zip -e --source winget
+winget install --id Google.Chrome -e --source winget
+winget install --id Microsoft.VisualStudioCode -e --source winget
+winget install --id Anaconda.Miniconda3 -e --source winget
+winget install --id Docker.DockerDesktop -e --source winget
+winget install --id Microsoft.WindowsTerminal -e --source winget
 choco install nuget.commandline                     --limit-output
-choco install git.install                           --limit-output -params '"/GitAndUnixToolsOnPath /NoShellIntegration"'
-choco install python                                --limit-output
-choco install 7zip                                  --limit-output
 choco install cascadiacode                          --limit-output
-choco install GoogleChrome                          --limit-output
-choco install wireshark                             --limit-output
-choco install vscode                                --limit-output
-choco install visualstudio2019professional          --limit-output
-choco install docker-desktop                        --limit-output
-choco install putty                                 --limit-output
-choco install adobereader /DesktopIcon /NoUpdates   --limit-output
-choco install microsoft-windows-terminal            --limit-output
-choco install awscli                                --limit-output
-choco install terraform                             --limit-output
-choco install sketchbook                            --limit-output
 # pin to taskbar in order
 
 Refresh-Environment
@@ -121,22 +110,14 @@ New-Item -ItemType SymbolicLink -Path "$HOME/.gitattributes" -Target "$HOME\repo
 (get-item "$HOME\.gitignore" -Force).Attributes += 'Hidden'
 (get-item "$HOME\.gitattributes" -Force).Attributes += 'Hidden'
 
-# Wacom Tablet Installer
-# if (!(Test-Path "C:\Program Files\Tablet\Wacom\32\WacomDesktopCenter.exe")) 
-# {
-#     $wacom = curlex "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.43-3.exe"
-#     $wacom_path = join-path $env:Temp $wacom.Name
-#     Start-Process $wacom_path -Wait
-# }
-
 # Install Linux Kernel Updates for WSL2
-$kernel_update = curlex "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
-$kernel_update_path = join-path $env:Temp $kernel_update.Name
-Start-Process msiexec.exe -Wait -ArgumentList "/I $kernel_update_path"
-wsl --set-default-version 2
+# $kernel_update = curlex "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
+# $kernel_update_path = join-path $env:Temp $kernel_update.Name
+# Start-Process msiexec.exe -Wait -ArgumentList "/I $kernel_update_path"
+# wsl --set-default-version 2
 
 # Install Ubuntu 20.04
-$ubuntu_2004 = curlex "https://aka.ms/wslubuntu2004"
-Add-AppxPackage $ubuntu_2004
+# $ubuntu_2004 = curlex "https://aka.ms/wslubuntu2004"
+# Add-AppxPackage $ubuntu_2004
 # This is the Microsoft WSL executable name of the Ubuntu distribution
-ubuntu2004.exe
+# ubuntu2004.exe
