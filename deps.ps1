@@ -34,14 +34,14 @@ if ($null -eq (which cinst)) {
 }
 
 # system and cli
-winget install --id Git.Git -e --source winget
-winget install --id cURL.cURL -e --source winget
-winget install --id 7zip.7zip -e --source winget
-winget install --id Google.Chrome -e --source winget
-winget install --id Microsoft.VisualStudioCode -e --source winget
-winget install --id Anaconda.Miniconda3 -e --source winget
-winget install --id Docker.DockerDesktop -e --source winget
-winget install --id Microsoft.WindowsTerminal -e --source winget
+winget install --id Git.Git -e --source winget --accept-source-agreements
+winget install --id cURL.cURL -e --source winget --accept-source-agreements
+winget install --id 7zip.7zip -e --source winget --accept-source-agreements
+winget install --id Google.Chrome -e --source winget --accept-source-agreements
+winget install --id Microsoft.VisualStudioCode -e --source winget --accept-source-agreements
+winget install --id Anaconda.Miniconda3 -e --source winget --accept-source-agreements
+winget install --id Docker.DockerDesktop -e --source winget --accept-source-agreements
+winget install --id Microsoft.WindowsTerminal -e --source winget --accept-source-agreements
 choco install nuget.commandline                     --limit-output
 choco install cascadiacode                          --limit-output
 # pin to taskbar in order
@@ -49,12 +49,9 @@ choco install cascadiacode                          --limit-output
 Refresh-Environment
 
 $VSCodeExtensions = @(
-    "CoenraadS.bracket-pair-colorizer-2"
     "hashicorp.terraform"
-    "ms-azuretools.vscode-docker"
     "ms-dotnettools.csharp"
     "ms-kubernetes-tools.vscode-kubernetes-tools"
-    "ms-python.pythonms-toolsai.jupyter"
     "ms-vscode-remote.remote-containers"
     "ms-vscode-remote.remote-ssh"
     "ms-vscode-remote.remote-ssh-edit"
