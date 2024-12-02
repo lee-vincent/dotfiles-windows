@@ -16,7 +16,7 @@ Copy-Item -Path ./components/** -Destination $componentDir -Include **
 # advise user
 if((Get-Item "$HOME\.gitconfig" -ErrorAction SilentlyContinue | Select-Object LinkType).LinkType -ne "SymbolicLink")
 {
-    write-host "No Symlink found for $HOME\.gitconfig make sure you runs deps.ps1 or set manually"
+    write-host "No Symlink found for $HOME\.gitconfig make sure you run deps.ps1 or set manually"
 }
 
 $gitUserName=""
