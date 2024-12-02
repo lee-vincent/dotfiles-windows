@@ -51,6 +51,7 @@
     # Undo Commit; leaves files. Only for non-public commits
     uncommit = reset --soft HEAD^
 
+	nothing = !echo \"This alias does nothing useful.\"
 [pretty]
     colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 
