@@ -453,6 +453,18 @@ Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" "RestartNo
 # Disable updates over metered connections: Enable: 1, Disable: 0
 Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" "AllowAutoWindowsUpdateDownloadOverMeteredNetwork" 0
 
+# <Use the Windows 10 Context Menu when you right-click>
+# Create the parent key
+New-Item -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Force | Out-Null
+# Create the InprocServer32 subkey
+New-Item -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Force | Out-Null
+# Set the default value to empty
+Set-ItemProperty -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(Default)" -Value ""
+# Restart Windows Explorer
+Stop-Process -Name explorer -Force
+Start-Process explorer
+# </Use the Windows 10 Context Menu when you right-click>
+
 # Opt-In to Microsoft Update
 $MU = New-Object -ComObject Microsoft.Update.ServiceManager -Strict
 $MU.AddService2("7971f918-a847-4430-9279-4a52d1efe18d",7,"") | Out-Null

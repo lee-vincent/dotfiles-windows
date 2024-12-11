@@ -124,6 +124,7 @@
 	# signingkey = D397B4DA31609F8D
 [safe]
 	directory = C:/Users/vinnie/repos/dotfiles-windows
+	directory = C:/Users/VinnieLee/repos/dotfiles-windows
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 # [commit]

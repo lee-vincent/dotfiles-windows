@@ -107,6 +107,21 @@ New-Item -ItemType SymbolicLink -Path "$HOME/.gitattributes" -Target "$HOME\repo
 (get-item "$HOME\.gitignore" -Force).Attributes += 'Hidden'
 (get-item "$HOME\.gitattributes" -Force).Attributes += 'Hidden'
 
+
+# Path to VS Code executable (adjust if needed)
+$codePath = "$env:LOCALAPPDATA\Programs\Microsoft VS Code\Code.exe"
+
+# Add "Open with Code" for folders
+New-Item -Path "HKCR:\Directory\shell\OpenWithCode" -Force | Out-Null
+Set-ItemProperty -Path "HKCR:\Directory\shell\OpenWithCode" -Name "(Default)" -Value "Open with Code"
+Set-ItemProperty -Path "HKCR:\Directory\shell\OpenWithCode" -Name "Icon" -Value "$codePath"
+
+New-Item -Path "HKCR:\Directory\shell\OpenWithCode\command" -Force | Out-Null
+Set-ItemProperty -Path "HKCR:\Directory\shell\OpenWithCode\command" -Name "(Default)" -Value "`"$codePath`" `"%V`""
+
+
+
+
 # Install Linux Kernel Updates for WSL2
 $kernel_update = curlex "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 $kernel_update_path = join-path $env:Temp $kernel_update.Name
