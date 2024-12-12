@@ -16,14 +16,27 @@ reg delete 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explore
 
 
 dynamically update Remove-ClutterFolders.xml task with SID and Computer\Username
+
 PS C:\Users\vinnie> $mysid=(get-localuser -Name vinnie).sid.Value
+for AzureAD connected accounts do this:
+$output = whoami /user
+
+$sidLine = $output | Select-String -Pattern "azuread\\"
+
+if ($sidLine) {
+    $sid = $sidLine -replace ".*azuread\\\S+\s+", ""  # Remove everything before the SID
+    Write-Output "$sid"
+} else {
+    Write-Output "No SID found in the output."
+}
+
 go to task scheduler and import the xml - choose not to use password/local resources only and run with highest privilege
 PS C:\Users\vinnie> Write-Host $mysid
-S-1-5-21-782633745-1410770413-1650820348-1003
+S-xxx
 <Author>VLEE-WS-P\Vinnie</Author> 
 <Principals>
     <Principal id="Author">
-      <UserId>S-1-5-21-2133641409-2209656088-113430463-1001</UserId>
+      <UserId>S-xxx</UserId>
 
 
 --add windows terminal and vscode settings json files to tracking in home/

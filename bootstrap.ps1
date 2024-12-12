@@ -34,3 +34,28 @@ Remove-Variable gitUserName
 Remove-Variable gitEmail
 Remove-Variable componentDir
 Remove-Variable profileDir
+
+# <Replace the windows powershell path template>
+# Define the path to the XML file
+$xmlTemplateFilePath = ".\components\Remove-ClutterFolders.template"
+$xmlFinalFilePath = ".\components\Remove-ClutterFolders.xml"
+
+# Check if the XML file exists
+if (Test-Path $xmlTemplateFilePath) {
+    # Define the replacement value with single backslashes
+    $userProfilePath = "$($env:USERPROFILE)\Documents\WindowsPowerShell"
+
+    # Read the content of the XML file
+    $xmlContent = Get-Content -Path $xmlTemplateFilePath -Raw
+
+    # Replace the placeholder with the actual value
+    $updatedContent = $xmlContent -replace "{{USER_POWERSHELL_PROFILE_PATH}}", $userProfilePath
+
+    # Save the updated content back to the XML file
+    Set-Content -Path "$xmlFinalFilePath" -Value $updatedContent -Encoding UTF8
+
+    Write-Host "Updated the XML file successfully."
+}
+else {
+    Write-Error "The XML file '$xmlTemplateFilePath' does not exist."
+}
