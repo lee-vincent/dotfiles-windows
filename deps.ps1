@@ -50,6 +50,7 @@ Refresh-Environment
 
 $VSCodeExtensions = @(
     "hashicorp.terraform"
+    "nvidia.nsight-vscode-edition"
     "ms-dotnettools.csharp"
     "ms-kubernetes-tools.vscode-kubernetes-tools"
     "ms-vscode-remote.remote-containers"
